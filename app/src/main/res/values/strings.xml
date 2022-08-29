@@ -8,4 +8,6 @@
     <string name="desafios_para_ti">Desafíos para ti</string>
     <string name="title_favorites">Tus favoritos</string>
     <string name="lorem_ipsilum">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+    <string name="editar_desaf_o">Editar Desafío</string>
+    <string name="crear_desafio">CrearDesafio</string>
 </resources>
