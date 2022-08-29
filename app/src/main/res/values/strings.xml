@@ -5,4 +5,7 @@
     <string name="title_my_challenges">Mis desafíos</string>
     <string name="title_chat">Chat</string>
     <string name="title_account">Cuenta</string>
+    <string name="desafios_para_ti">Desafíos para ti</string>
+    <string name="title_favorites">Tus favoritos</string>
+    <string name="lorem_ipsilum">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
 </resources>

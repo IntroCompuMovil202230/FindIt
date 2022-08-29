@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_challenges"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_compass_icon"
         android:title="@string/title_challenges" />
     <item
         android:id="@+id/navigation_my_challenges"
@@ -12,12 +12,12 @@
 
     <item
         android:id="@+id/navigation_chat"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_chat_icon"
         android:title="@string/title_chat" />
 
     <item
         android:id="@+id/navigation_account"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_user_icon"
         android:title="@string/title_account" />
 
 </menu>
