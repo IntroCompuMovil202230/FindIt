@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.ntn.findtit.adapters.DesafioEditarAdapter
 import com.ntn.findtit.databinding.FragmentMyChallengesBinding
+import com.ntn.findtit.entity.Desafio
 
 class MyChallengeFragment : Fragment() {
 
@@ -22,18 +22,22 @@ class MyChallengeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(MyChallengeViewModel::class.java)
-
         _binding = FragmentMyChallengesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
+        val desafios = ArrayList<Desafio>()
+        for(i in 0..25) {
+            val de = Desafio("numero"+i, "na", i, i,5);
+            desafios.add(de);
         }
-        return root
+        val d = DesafioEditarAdapter(context, desafios);
+        val list = binding.lista
+        list.adapter = d
+
+        return binding.root
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

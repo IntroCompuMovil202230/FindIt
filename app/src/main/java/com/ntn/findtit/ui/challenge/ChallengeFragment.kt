@@ -46,13 +46,6 @@ class ChallengeFragment : Fragment() {
                 CarouselItem(R.drawable.image4)
             )
         )
-
-        //horizontal scrollview
-        val yourChallenges = binding.yourChallengesScrollView
-        for (i in 0..5) {
-
-
-        }
     }
 
     override fun onDestroyView() {

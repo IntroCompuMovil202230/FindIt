@@ -1,4 +1,4 @@
-package com.ntn.findtit;
+package com.ntn.findtit.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.ntn.findtit.R;
+import com.ntn.findtit.entity.Desafio;
 
 import java.util.ArrayList;
 

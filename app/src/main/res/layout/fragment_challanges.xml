@@ -40,7 +40,6 @@
         app:showBottomShadow="false"
         app:showTopShadow="false"
         app:showCaption="false"
-
         />
 
     <TextView
@@ -64,7 +63,7 @@
     <HorizontalScrollView
         android:id="@+id/your_challenges_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="160dp"
         android:layout_marginTop="25dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +78,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="15dp"
@@ -96,7 +95,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:src="@drawable/image0"
                         android:scaleType="centerCrop"
                         android:visibility="visible" />
@@ -104,16 +103,53 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:text="@string/lorem_ipsilum"
                         android:textAlignment="center"
+                        android:layout_weight="2"
+
+                        android:paddingHorizontal="15dp"
                         />
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="3.5" />
+                        <TextView
+                            android:paddingStart="40dp"
+                            android:paddingEnd="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jugar"
+                            android:textColor="#006FFD"
+                            />
+
+
+
+
+                    </LinearLayout>
+                    
+
+
+
+
+
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="15dp"
@@ -130,7 +166,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:src="@drawable/image1"
                         android:scaleType="centerCrop"
                         android:visibility="visible" />
@@ -138,16 +174,53 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:text="@string/lorem_ipsilum"
                         android:textAlignment="center"
+                        android:layout_weight="2"
+
+                        android:paddingHorizontal="15dp"
                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="3.5" />
+                        <TextView
+                            android:paddingStart="40dp"
+                            android:paddingEnd="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jugar"
+                            android:textColor="#006FFD"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="15dp"
@@ -164,7 +237,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:src="@drawable/image2"
                         android:scaleType="centerCrop"
                         android:visibility="visible" />
@@ -172,16 +245,53 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:text="@string/lorem_ipsilum"
                         android:textAlignment="center"
+                        android:layout_weight="2"
+
+                        android:paddingHorizontal="15dp"
                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="3.5" />
+                        <TextView
+                            android:paddingStart="40dp"
+                            android:paddingEnd="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jugar"
+                            android:textColor="#006FFD"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="15dp"
@@ -198,7 +308,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:src="@drawable/image3"
                         android:scaleType="centerCrop"
                         android:visibility="visible" />
@@ -206,14 +316,53 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:text="@string/lorem_ipsilum"
                         android:textAlignment="center"
+                        android:layout_weight="2"
+
+                        android:paddingHorizontal="15dp"
                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="3.5" />
+                        <TextView
+                            android:paddingStart="40dp"
+                            android:paddingEnd="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jugar"
+                            android:textColor="#006FFD"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+
 
 
         </LinearLayout>
@@ -235,10 +384,11 @@
         />
 
     <HorizontalScrollView
-        android:id="@+id/your_favorites_scroll_view"
+        android:id="@+id/your_favorites_text_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="116dp"
+        android:layout_height="160dp"
         android:layout_marginTop="25dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/your_favorites_text"
@@ -251,7 +401,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="15dp"
@@ -268,7 +418,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:src="@drawable/image1"
                         android:scaleType="centerCrop"
                         android:visibility="visible" />
@@ -276,16 +426,53 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:text="@string/lorem_ipsilum"
                         android:textAlignment="center"
+                        android:layout_weight="2"
+
+                        android:paddingHorizontal="15dp"
                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="3.5" />
+                        <TextView
+                            android:paddingStart="40dp"
+                            android:paddingEnd="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jugar"
+                            android:textColor="#006FFD"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="15dp"
@@ -302,7 +489,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:src="@drawable/image2"
                         android:scaleType="centerCrop"
                         android:visibility="visible" />
@@ -310,16 +497,53 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:text="@string/lorem_ipsilum"
                         android:textAlignment="center"
+                        android:layout_weight="2"
+
+                        android:paddingHorizontal="15dp"
                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="3.5" />
+                        <TextView
+                            android:paddingStart="40dp"
+                            android:paddingEnd="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jugar"
+                            android:textColor="#006FFD"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="15dp"
@@ -336,7 +560,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:src="@drawable/image3"
                         android:scaleType="centerCrop"
                         android:visibility="visible" />
@@ -344,17 +568,57 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
                         android:text="@string/lorem_ipsilum"
                         android:textAlignment="center"
+                        android:layout_weight="2"
+
+                        android:paddingHorizontal="15dp"
                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        >
+
+                        <RatingBar
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="false"
+                            android:numStars="5"
+                            android:rating="3.5" />
+                        <TextView
+                            android:paddingStart="40dp"
+                            android:paddingEnd="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jugar"
+                            android:textColor="#006FFD"
+                            />
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
 
+
+
         </LinearLayout>
     </HorizontalScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

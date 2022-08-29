@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.ntn.findtit.adapters.DesafioEditarAdapter;
+import com.ntn.findtit.entity.Desafio;
+
 import java.util.ArrayList;
 
 public class MyChallengesActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.ntn.findtit;
+package com.ntn.findtit.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
