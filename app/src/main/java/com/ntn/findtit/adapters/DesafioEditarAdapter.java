@@ -42,7 +42,7 @@ public class DesafioEditarAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.activity_desafio_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.desafio_item_adapter, parent, false);
         }
 
         TextView nombre_desafio = convertView.findViewById(R.id.nombre_desafio);

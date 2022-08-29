@@ -4,17 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ntn.findtit.adapters.Contact
+import com.ntn.findtit.adapters.ContactsAdapter
 import com.ntn.findtit.databinding.FragmentChatBinding
 
 class ChatFragment : Fragment() {
 
     private var _binding: FragmentChatBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,17 +20,20 @@ class ChatFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(ChatViewModel::class.java)
-
         _binding = FragmentChatBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        initialize()
+        return binding.root
+    }
+    private fun initialize(){
+        //contact recicle view
+        val recycle = binding.contactView
+        recycle.layoutManager = LinearLayoutManager(context)
+        val data = ArrayList<Contact>()
+        for (i in 1..20) {
+            data.add(Contact("name$i", "Super message preview no. $i"))
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
         }
-        return root
+        recycle.adapter = ContactsAdapter(data)
     }
 
     override fun onDestroyView() {
