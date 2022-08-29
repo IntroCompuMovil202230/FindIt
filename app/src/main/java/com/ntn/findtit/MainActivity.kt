@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val b = findViewById<Button>(R.id.boton)
         b.setOnClickListener { view ->
-            val intent = Intent(view!!.context, MisDesafios::class.java)
+            val intent = Intent(view!!.context, MyChallengesActivity::class.java)
             startActivity(intent)
         }
 

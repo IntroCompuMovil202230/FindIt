@@ -7,13 +7,13 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MisDesafios extends AppCompatActivity {
+public class MyChallengesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mis_desafios);
         ArrayList<Desafio> desafios = new ArrayList<>();
+        setContentView(R.layout.activity_my_challenges);
 
         for(int i=0; i<25; i++) {
             Desafio de = new Desafio("numero"+i, "na", i, i,5);

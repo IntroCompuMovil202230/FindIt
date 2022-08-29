@@ -14,7 +14,7 @@
         android:theme="@style/Theme.FindtIt"
         tools:targetApi="31">
         <activity
-            android:name=".MisDesafios"
+            android:name=".MyChallengesActivity"
             android:exported="false" />
         <activity
             android:name=".DesafioItemActivity"
