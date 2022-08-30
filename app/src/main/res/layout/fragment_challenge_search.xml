@@ -4,51 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchChallengeActivity"
+    tools:context=".ui.challenge.ChallengeSearchFragment"
     android:orientation="vertical">
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MyChallengesActivity"
-    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/arrow_back_search"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+
+        />
+
 
         <Button
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_width="110dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="7dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:text="Buscar"
             android:textAllCaps="false"
             android:textColor="@color/azul_boton"
             app:icon="@drawable/ic_baseline_search_24"
-            app:strokeColor="@color/azul_boton"
             app:iconTint="@color/azul_boton"
-            />
+            app:strokeColor="@color/azul_boton" />
+
         <Button
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_width="110dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="7dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
             android:text="Filtrar"
             android:textAllCaps="false"
             android:textColor="@color/azul_boton"
             app:icon="@drawable/ic_baseline_filter_list_24"
-            app:strokeColor="@color/azul_boton"
             app:iconTint="@color/azul_boton"
-            />
-
+            app:strokeColor="@color/azul_boton" />
 
 
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lista"
+        android:id="@+id/lista_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

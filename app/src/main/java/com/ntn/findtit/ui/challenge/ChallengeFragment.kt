@@ -1,3 +1,4 @@
+
 package com.ntn.findtit.ui.challenge
 
 import android.os.Bundle
@@ -9,7 +10,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.ntn.findtit.R
 import com.ntn.findtit.databinding.FragmentChallangesBinding
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
@@ -18,6 +23,7 @@ class ChallengeFragment : Fragment() {
 
     private var _binding: FragmentChallangesBinding? = null
     private val binding get() = _binding!!
+
 
 
     override fun onCreateView(
@@ -31,7 +37,23 @@ class ChallengeFragment : Fragment() {
         _binding = FragmentChallangesBinding.inflate(inflater, container, false)
 
         initialize()
+
+
+
+        binding.cardTest.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val search = ChallengeSearchFragment()
+                replaceFragment(search)
+            }
+        })
         return binding.root
+    }
+
+    private fun replaceFragment(fragment:Fragment){
+        val fragmentTrac = getParentFragmentManager().beginTransaction()
+        fragmentTrac.replace(R.id.nav_host_fragment_activity_principal,fragment,"search")
+        fragmentTrac.addToBackStack("search")
+        fragmentTrac.commit()
     }
 
     private fun initialize(){
