@@ -12,11 +12,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val t:Button = findViewById(R.id.button)
         val r: TextView = findViewById(R.id.login_register)
-        if(r!=null) {
-            r.setOnClickListener {
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
-            }
+        r.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
         t.setOnClickListener {
             val intent = Intent(this, PrincipalActivity::class.java)
