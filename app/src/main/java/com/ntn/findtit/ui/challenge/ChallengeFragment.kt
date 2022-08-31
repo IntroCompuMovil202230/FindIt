@@ -31,31 +31,24 @@ class ChallengeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(ChallengeViewModel::class.java)
-
-        _binding = FragmentChallangesBinding.inflate(inflater, container, false)
+               _binding = FragmentChallangesBinding.inflate(inflater, container, false)
 
         initialize()
 
 
-        binding.testPlay.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val play = PlayFragment()
-                replaceFragment(play)
-            }
-        })
-        binding.searchChallengeView.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val search = ChallengeSearchFragment()
-                replaceFragment(search)
-            }
-        })
+        binding.testPlay.setOnClickListener {
+            val play = PlayFragment()
+            replaceFragment(play)
+        }
+        binding.searchChallengeView.setOnClickListener {
+            val search = ChallengeSearchFragment()
+            replaceFragment(search)
+        }
         return binding.root
     }
 
     private fun replaceFragment(fragment:Fragment){
-        val fragmentTrac = getParentFragmentManager().beginTransaction()
+        val fragmentTrac = parentFragmentManager.beginTransaction()
         fragmentTrac.replace(R.id.nav_host_fragment_activity_principal,fragment,"search")
         fragmentTrac.addToBackStack("search")
         fragmentTrac.commit()
