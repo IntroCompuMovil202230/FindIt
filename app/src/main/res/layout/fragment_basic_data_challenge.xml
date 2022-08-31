@@ -118,7 +118,7 @@
             android:layout_height="100dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/play_button"
+                android:id="@+id/back_button_basic"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"

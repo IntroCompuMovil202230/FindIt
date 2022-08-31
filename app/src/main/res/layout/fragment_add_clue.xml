@@ -18,7 +18,7 @@
             >
 
             <ImageButton
-                android:id="@+id/arrow_back_search"
+                android:id="@+id/arrow_back_add_clue"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
@@ -74,6 +74,7 @@
                 app:strokeColor="@color/azul_boton" />
 
             <Button
+                android:id="@+id/button_add_clue"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
@@ -105,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:fontFamily="@font/inter_bold"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="140dp"
                 android:text="Categoría"
                 android:layout_marginTop="0dp"
                 android:textSize="15dp"
@@ -114,26 +115,176 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:fontFamily="@font/inter_bold"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="60dp"
                     android:text="Editar"
                 android:layout_marginTop="0dp"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
-        <view class="androidx.appcompat.app.AlertController$RecycleListView"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:padding="20dp"/>
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/inter_semibold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:text="Pista principal"
+                android:textSize="17dp"
+                android:textStyle="normal" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/dificultad_search"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="47dp"
+                android:layout_height="wrap_content"
+                android:text="Texto" />
+
+            <ImageButton
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_mode_edit_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/inter_semibold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:text="Pista secundaria # 1"
+                android:textSize="17dp"
+                android:textStyle="normal" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="Texto" />
+            <ImageButton
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_mode_edit_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/inter_semibold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:text="Pista secundaria # 2"
+                android:textSize="17dp"
+                android:textStyle="normal" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="Texto" />
+            <ImageButton
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_mode_edit_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/inter_semibold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:text="Pista secundaria # 3"
+                android:textSize="17dp"
+                android:textStyle="normal" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="Texto" />
+            <ImageButton
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_mode_edit_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/inter_semibold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:text="Pista secundaria # 4"
+                android:textSize="17dp"
+                android:textStyle="normal" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="Texto" />
+            <ImageButton
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_mode_edit_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/inter_semibold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="50dp"
+                android:text="Pista secundaria # 5"
+                android:textSize="17dp"
+                android:textStyle="normal" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="Texto" />
+            <ImageButton
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_mode_edit_24"/>
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:padding="15dp"
+            android:layout_marginTop="100dp"
             android:layout_height="100dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/play_button"
+                android:id="@+id/back_button_add_clue"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
@@ -145,7 +296,7 @@
                 android:textColor="@color/azul_boton"
                 android:textSize="14sp" />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/play_button_create"
+                android:id="@+id/next_add_clue"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="15dp"
@@ -158,6 +309,7 @@
                 android:textSize="14sp" />
 
         </LinearLayout>
+
 
     </LinearLayout>
 

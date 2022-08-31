@@ -6,7 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.ntn.findtit.R
+import com.ntn.findtit.adapters.ChallengeSearchAdapter
+import com.ntn.findtit.databinding.FragmentChallengeSearchBinding
+import com.ntn.findtit.databinding.FragmentObjetiveChallengeBinding
+import com.ntn.findtit.entity.Desafio
 
 /**
  * A simple [Fragment] subclass.
@@ -15,44 +20,59 @@ import com.ntn.findtit.R
  *
  */
 class Objetive_ChallengeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
+    private var _binding: FragmentObjetiveChallengeBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_objetive__challenge, container, false)
+    ): View {
+
+        _binding = FragmentObjetiveChallengeBinding.inflate(inflater, container, false)
+
+        binding.nextObjective.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val search = AddClueFragment()
+                replaceFragment(search)
+            }
+        })
+
+        val arrow = binding.arrowBackObjective
+        arrow.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val fm: FragmentManager = activity!!.supportFragmentManager
+                fm.popBackStack()
+            }
+        })
+
+        val back = binding.backButtonObjective
+        back.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val fm: FragmentManager = activity!!.supportFragmentManager
+                fm.popBackStack()
+            }
+        })
+
+        return binding.root
     }
 
-    companion object {
-        // TODO: Rename parameter arguments, choose names that match
-        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
+    private fun replaceFragment(fragment:Fragment){
+        val fragmentTrac = getParentFragmentManager().beginTransaction()
+        fragmentTrac.replace(R.id.nav_host_fragment_activity_principal,fragment,"objective")
+        fragmentTrac.addToBackStack("objective")
+        fragmentTrac.commit()
+    }
 
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Objetive_ChallengeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String?, param2: String?): Objetive_ChallengeFragment {
-            val fragment = Objetive_ChallengeFragment()
-            val args = Bundle()
-            args.putString(ARG_PARAM1, param1)
-            args.putString(ARG_PARAM2, param2)
-            fragment.arguments = args
-            return fragment
-        }
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -47,8 +47,8 @@ class MyChallengeFragment : Fragment() {
 
     private fun replaceFragment(fragment:Fragment){
         val fragmentTrac = getParentFragmentManager().beginTransaction()
-        fragmentTrac.replace(R.id.nav_host_fragment_activity_principal,fragment,"create")
-        fragmentTrac.addToBackStack("create")
+        fragmentTrac.replace(R.id.nav_host_fragment_activity_principal,fragment,"init")
+        fragmentTrac.addToBackStack("init")
         fragmentTrac.commit()
     }
 

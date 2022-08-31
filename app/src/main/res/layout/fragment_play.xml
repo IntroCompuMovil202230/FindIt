@@ -8,7 +8,6 @@
     tools:context=".ui.challenge.PlayFragment">
 
     <LinearLayout
-        android:background="#E8E9F1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -42,6 +41,7 @@
             app:strokeColor="@color/azul_boton" />
 
         <Button
+            android:id="@+id/term_map_button"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,8 +58,7 @@
 
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#E8E9F1">
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -119,39 +118,40 @@
             />
         -->
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="94dp"
-        android:orientation="horizontal"
-            android:background="@color/white"
-        >
-        <ImageView
-            android:layout_marginTop="20dp"
-            android:layout_width="101dp"
-            android:layout_height="35dp"
-            app:srcCompat="@drawable/ic_baseline_info_24" />
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="94dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            >
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="101dp"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/ic_baseline_info_24" />
 
-            <TextView
-                android:id="@+id/notification_title"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:fontFamily="@font/inter_bold"
-                android:textSize="16dp"
-                android:text="Frío" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/notification_desc"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:text="Encuentra las pistas para llegar al objetivo."
-                android:textSize="12dp"
-                android:fontFamily="@font/inter" />
+                <TextView
+                    android:id="@+id/notification_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:textSize="16dp"
+                    android:text="Frío" />
+
+                <TextView
+                    android:id="@+id/notification_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:text="Encuentra las pistas para llegar al objetivo."
+                    android:textSize="12dp"
+                    android:fontFamily="@font/inter" />
+            </LinearLayout>
         </LinearLayout>
-        </LinearLayout>
+
     </LinearLayout>
     e
 </FrameLayout>

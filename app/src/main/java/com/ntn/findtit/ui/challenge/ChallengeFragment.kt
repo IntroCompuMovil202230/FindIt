@@ -45,7 +45,7 @@ class ChallengeFragment : Fragment() {
                 replaceFragment(play)
             }
         })
-        binding.cardTest.setOnClickListener(object : View.OnClickListener {
+        binding.searchChallengeView.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val search = ChallengeSearchFragment()
                 replaceFragment(search)

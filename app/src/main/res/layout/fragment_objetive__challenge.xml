@@ -18,7 +18,7 @@
             >
 
             <ImageButton
-                android:id="@+id/arrow_back_search"
+                android:id="@+id/arrow_back_objective"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
@@ -65,11 +65,12 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/round_background" />
+
         <ImageView
-            android:padding="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/group_182"/>
+            android:layout_height="364dp"
+            android:padding="15dp"
+            android:src="@drawable/group_182" />
 
         <Button
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
@@ -88,7 +89,7 @@
             android:layout_height="100dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/play_button"
+                android:id="@+id/back_button_objective"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
@@ -100,7 +101,7 @@
                 android:textColor="@color/azul_boton"
                 android:textSize="14sp" />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/play_button_create"
+                android:id="@+id/next_objective"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="15dp"

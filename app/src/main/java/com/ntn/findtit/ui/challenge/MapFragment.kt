@@ -1,29 +1,26 @@
 package com.ntn.findtit.ui.challenge
 
 import android.os.Bundle
-import com.ntn.findtit.ui.challenge.PlayFragment
+import com.ntn.findtit.ui.challenge.MapFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.ntn.findtit.R
-import com.ntn.findtit.adapters.DesafioEditarAdapter
 import com.ntn.findtit.adapters.NotificationAdapter
-import com.ntn.findtit.databinding.FragmentMyChallengesBinding
+import com.ntn.findtit.databinding.FragmentMapBinding
 import com.ntn.findtit.databinding.FragmentPlayBinding
-import com.ntn.findtit.entity.Desafio
 import com.ntn.findtit.entity.Notification
 
 /**
  * A simple [Fragment] subclass.
- * Use the [PlayFragment.newInstance] factory method to
+ * Use the [MapFragment.newInstance] factory method to
  * create an instance of this fragment.
- *
  */
-class PlayFragment : Fragment() {
+class MapFragment : Fragment() {
 
-    private var _binding: FragmentPlayBinding? = null
+    private var _binding: FragmentMapBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,7 +31,7 @@ class PlayFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPlayBinding.inflate(inflater, container, false)
+        _binding = FragmentMapBinding.inflate(inflater, container, false)
 
         val arrow = binding.arrowBackPlay
         arrow.setOnClickListener(object : View.OnClickListener {
@@ -44,9 +41,9 @@ class PlayFragment : Fragment() {
             }
         })
 
-        binding.termMapButton.setOnClickListener(object : View.OnClickListener {
+        binding.mapTermButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                val search = MapFragment()
+                val search = PlayFragment()
                 replaceFragment(search)
             }
         })
@@ -67,8 +64,8 @@ class PlayFragment : Fragment() {
     }
     private fun replaceFragment(fragment:Fragment){
         val fragmentTrac = getParentFragmentManager().beginTransaction()
-        fragmentTrac.replace(R.id.nav_host_fragment_activity_principal,fragment,"map")
-        fragmentTrac.addToBackStack("map")
+        fragmentTrac.replace(R.id.nav_host_fragment_activity_principal,fragment,"play")
+        fragmentTrac.addToBackStack("play")
         fragmentTrac.commit()
     }
 

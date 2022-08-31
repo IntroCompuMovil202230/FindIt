@@ -17,7 +17,7 @@
             >
 
             <ImageButton
-                android:id="@+id/arrow_back_search"
+                android:id="@+id/arrow_back_add_clue_item"
                 android:layout_width="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
@@ -180,10 +180,9 @@
             android:layout_alignParentTop="true"
             android:text="+" />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/play_button_create"
+                android:id="@+id/next_add_clue_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-               android:layout_marginTop="100dp"
                 android:background="@drawable/button_item_blue"
                 android:contextClickable="false"
                 android:fontFamily="@font/inter_semibold"

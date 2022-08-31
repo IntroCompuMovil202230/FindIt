@@ -40,6 +40,22 @@ class Basic_data_challengeFragment : Fragment() {
             }
         })
 
+        val arrow = binding.arrowBackCreateBasic
+        arrow.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val fm: FragmentManager = activity!!.supportFragmentManager
+                fm.popBackStack()
+            }
+        })
+
+        val back = binding.backButtonBasic
+        back.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val fm: FragmentManager = activity!!.supportFragmentManager
+                fm.popBackStack()
+            }
+        })
+
         return binding.root
     }
 
