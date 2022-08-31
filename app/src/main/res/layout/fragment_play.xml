@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.challenge.PlayFragment">
+
+    <LinearLayout
+        android:background="#E8E9F1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageButton
+            android:id="@+id/arrow_back_play"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+
+            />
+
+
+        <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textAllCaps="false"
+            android:text="1:30"
+            android:textColor="@color/azul_boton"
+            app:icon="@drawable/ic_baseline_hourglass_bottom_24"
+            app:iconTint="@color/azul_boton"
+            app:strokeColor="@color/azul_boton" />
+
+        <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mapa"
+            android:layout_marginStart="100dp"
+            android:textAllCaps="false"
+            android:textColor="@color/azul_boton"
+            app:icon="@drawable/ic_baseline_place_24"
+            app:iconTint="@color/azul_boton"
+            app:strokeColor="@color/azul_boton" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E8E9F1">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="185dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/group_175" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="385dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:progressDrawable="@drawable/progress_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="103dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="265dp"
+            android:gravity="center"
+            android:src="@drawable/circulo_azul_mensajes" />
+    </FrameLayout>
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Chequear termómetro"
+            android:textAllCaps="false"
+            android:layout_margin="10dp"
+            android:background="@color/azul_button"
+            android:textColor="@color/white" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@color/green_acqua"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Ver pistas"
+            android:layout_margin="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+        <!--
+        <ListView
+            android:id="@+id/list_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        -->
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:orientation="horizontal"
+            android:background="@color/white"
+        >
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_width="101dp"
+            android:layout_height="35dp"
+            app:srcCompat="@drawable/ic_baseline_info_24" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/notification_title"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="16dp"
+                android:text="Frío" />
+
+            <TextView
+                android:id="@+id/notification_desc"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="Encuentra las pistas para llegar al objetivo."
+                android:textSize="12dp"
+                android:fontFamily="@font/inter" />
+        </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    e
+</FrameLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/background">
+        <rotate android:fromDegrees="90" android:toDegrees="90">
+            <shape android:shape="line">
+                <stroke android:width="5dp" android:color="#006FFD"/>
+            </shape>
+        </rotate>
+    </item>
+
+    <item android:id="@+id/progress">
+        <clip android:clipOrientation="vertical" android:gravity="bottom">
+            <rotate android:fromDegrees="90" android:toDegrees="90">
+                <shape android:shape="line">
+                    <stroke android:width="5dp" android:color="#FD0000"/>
+                </shape>
+            </rotate>
+        </clip>
+    </item>
+</layer-list>
