@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mychallenge.Basic_data_challengeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageButton
+                android:id="@+id/arrow_back_create_basic"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+
+                />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="300dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:fontFamily="@font/inter_bold"
+            android:layout_marginLeft="20dp"
+            android:text="Datos Básicos"
+            android:layout_marginTop="50dp"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Ingrese los datos básicos para crear el desafío."
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:textStyle="normal" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Nombre del desafío"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Descripción"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField_desc"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descripción">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Imagenes"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="136dp"
+            android:layout_gravity="center"
+            android:padding="100dp"
+            android:src="@drawable/circulo" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:layout_height="100dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/play_button"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/button_item_blue"
+                android:contextClickable="false"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="@color/azul_boton"
+                android:textSize="14sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/next_create_basic"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/button_item_blue"
+                android:contextClickable="false"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Siguiente"
+                android:textAllCaps="false"
+                android:textColor="@color/azul_boton"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</FrameLayout>

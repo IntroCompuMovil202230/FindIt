@@ -41,6 +41,7 @@
 
         <Button
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:id="@+id/create_challenge_button"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_marginRight="7dp"
