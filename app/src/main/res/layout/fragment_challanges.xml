@@ -78,6 +78,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_test"
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -126,6 +127,7 @@
                             android:numStars="5"
                             android:rating="3.5" />
                         <TextView
+                            android:id="@+id/test_play"
                             android:paddingStart="40dp"
                             android:paddingEnd="1dp"
                             android:layout_width="wrap_content"

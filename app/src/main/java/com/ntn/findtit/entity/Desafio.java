@@ -3,6 +3,7 @@ package com.ntn.findtit.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+
 public class Desafio implements Parcelable {
     private String nombre_desafio;
     private String descripcion;
@@ -10,6 +11,27 @@ public class Desafio implements Parcelable {
     private int n_pistas;
     private int n_visitas;
     private int rating;
+
+    public void setDificultad(String dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    private String dificultad;
+
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public Desafio(String nombre_desafio, String descripcion, int n_pistas, int n_visitas, int rating, String dificultad) {
+        this.nombre_desafio = nombre_desafio;
+        this.descripcion = descripcion;
+        this.n_pistas = n_pistas;
+        this.n_visitas = n_visitas;
+        this.rating = rating;
+        this.dificultad = dificultad;
+    }
+
+
 
     public Desafio(String nombre_desafio, String descripcion, int n_pistas, int n_visitas, int rating) {
         this.nombre_desafio = nombre_desafio;
@@ -25,6 +47,7 @@ public class Desafio implements Parcelable {
         n_pistas = in.readInt();
         n_visitas = in.readInt();
         rating = in.readInt();
+        dificultad = in.readString();
     }
 
     public static final Creator<Desafio> CREATOR = new Creator<Desafio>() {
