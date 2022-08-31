@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.mychallenge.Add_Clue_itemFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageButton
+                android:id="@+id/arrow_back_search"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:fontFamily="@font/inter_bold"
+            android:layout_marginLeft="20dp"
+            android:text="Añadir Pista"
+            android:layout_marginTop="50dp"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Ingrese los de datos para crear una nueva pista."
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:textStyle="normal" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Nombre de la pista"
+            android:layout_marginTop="10dp"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Tipo"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <com.google.android.material.chip.ChipGroup
+            android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            >
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_1"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Imagen"/>
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:text="Texto"/>
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:text="Acertijo"/>
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+        style="@style/Widget.MaterialComponents.Chip.Choice"
+        android:text="Pregunta"/>
+
+    </com.google.android.material.chip.ChipGroup>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField3"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pregunta">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Puntaje de penalización"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="44dp"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="&lt;" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:layout_alignBottom="@+id/button1"
+                android:layout_toRightOf="@+id/button1"
+                android:gravity="center"
+                android:text="45" />
+
+            <Button android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/textView1"
+                android:text="&gt;" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginLeft="20dp"
+            android:text="Agregar Ubicación"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="+" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/play_button_create"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+               android:layout_marginTop="100dp"
+                android:background="@drawable/button_item_blue"
+                android:contextClickable="false"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Crear Pista"
+                android:textAllCaps="false"
+                android:textColor="@color/azul_boton"
+                android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

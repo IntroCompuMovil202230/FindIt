@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">FindtIt</string>
+    <string name="title_activity_principal">Principal</string>
+    <string name="title_challenges">Desafíos</string>
+    <string name="title_my_challenges">Mis desafíos</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_account">Cuenta</string>
+    <string name="desafios_para_ti">Desafíos para ti</string>
+    <string name="title_favorites">Tus favoritos</string>
+    <string name="lorem_ipsilum">Lorem ipsum dolor sit amet</string>
+    <string name="editar_desaf_o">Editar Desafío</string>
+    <string name="crear_desafio">CrearDesafio</string>
+    <string name="anterior">Anterior</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="b_squeda_pirata">Búsqueda pirata</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="text_description">Vive una gran aventura encontrando el objetivo oculto guiandote a partir de valiosas pistas que te llevarán mas cerca del tesoro.</string>
+    <string name="creador_text">Creador: @testuser</string>
+    <string name="caracter_sticas_del_desaf_o">Características del desafío</string>
+    <string name="pista_principal_text">1 Pista principal</string>
+    <string name="pistas_secundarias_text">12 pistas secundarias</string>
+    <string name="sitios_buscar_text">6 sitios para buscar</string>
+    <string name="dificultad_text">Dificultad</string>
+    <string name="facil_text">Facil</string>
+    <string name="normal_text">Normal</string>
+    <string name="medio_text">Medio</string>
+    <string name="dificil_text">Dificil</string>
+    <string name="maxima_text">Maxima</string>
+    <string name="jugar_text">▶ Jugar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_launcher_background"
+                />
+
+            <LinearLayout
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nombre_desafio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Nombre del desafio" />
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout"
+                        android:layout_width="34dp"
+                        android:layout_height="26dp"
+                        android:layout_marginTop="24dp"
+                        tools:layout_editor_absoluteX="308dp">
+
+                        <ImageView
+                            android:id="@+id/circulo2"
+                            android:layout_width="match_parent"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/circulo" />
+
+                        <ImageView
+                            android:id="@+id/visitas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="14dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/n_visualizaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:fontFamily="@font/inter"
+                        android:text="100 visitas"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="135dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/editar_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/button_item_blue"
+                    android:contextClickable="false"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="@string/editar_desaf_o"
+                    android:textAllCaps="false"
+                    android:textColor="@color/azul_boton"
+                    android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayout2"
+                        android:layout_width="34dp"
+                        android:layout_height="26dp"
+                        android:layout_marginTop="24dp"
+                        tools:layout_editor_absoluteX="308dp">
+
+                        <ImageView
+                            android:id="@+id/circulo1"
+                            android:layout_width="match_parent"
+                            android:layout_height="24dp"
+                            app:srcCompat="@drawable/circulo" />
+
+                        <ImageView
+                            android:id="@+id/info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="14dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_baseline_info_24" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/n_pistas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="26dp"
+                        android:fontFamily="@font/inter"
+                        android:text="100 visitas"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
