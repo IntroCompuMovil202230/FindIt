@@ -42,13 +42,13 @@
             android:textSize="17dp"
             android:textStyle="bold" />
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField3"
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Usuario">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/user_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textAutoComplete"
@@ -64,13 +64,13 @@
             android:textSize="17dp"
             android:textStyle="bold" />
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField"
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/email_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -87,13 +87,13 @@
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField_desc"
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/pass_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -110,13 +110,13 @@
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField_desc3"
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirmación">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confpass_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -125,14 +125,14 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_register"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesion"
+            android:text="Registrarse"
             android:layout_gravity="center"
             />
-        No tienes cuenta? Registrarse ahora
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -155,7 +155,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter"
                 android:textColor="@color/azul_boton"
-                android:text=" Iniciar Sesión"
+                android:text=" Inciar sesion"
                 android:textSize="15dp"
                 android:textStyle="bold" />
         </LinearLayout>

@@ -31,18 +31,18 @@
         android:layout_height="50dp"
         android:fontFamily="@font/inter_semibold"
         android:layout_marginLeft="20dp"
-        android:text="Correo Electrónico"
+        android:text="Nombre de usuario"
         android:layout_marginTop="10dp"
         android:textSize="17dp"
         android:textStyle="bold" />
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField"
         android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo">
+        android:hint="Usuario">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/user_field"
             android:layout_width="match_parent"
             android:inputType="textEmailAddress"
             android:layout_height="wrap_content"
@@ -65,7 +65,8 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/passlogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"

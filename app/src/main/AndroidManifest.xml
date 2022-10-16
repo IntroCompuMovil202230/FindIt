@@ -4,6 +4,8 @@
     package="com.ntn.findtit">
 
     <application
+        android:name=".AppParse"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,11 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindtIt"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
-            android:label="@string/title_activity_register"
-            android:theme="@style/Theme.FindtIt.NoActionBar" />
+            android:theme="@style/Theme.FindtIt.NoActionBar">
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
+        </activity>
         <activity
             android:name=".PreviewChallengeActivity"
             android:exported="false" />
