@@ -81,6 +81,8 @@ dependencies {
     //parse
     implementation 'com.parse:parse-android:+'
 
+    //Icons
+    implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
 
 
 

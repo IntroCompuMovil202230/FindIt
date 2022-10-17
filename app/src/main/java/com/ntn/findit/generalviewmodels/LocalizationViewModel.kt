@@ -1,4 +1,4 @@
-package com.ntn.findit
+package com.ntn.findit.generalviewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,5 +8,4 @@ class LocalizationViewModel(application: Application) : AndroidViewModel(applica
 
     private val locationData = LocationLiveData(application)
     fun requestLocationUpdates() = locationData
-    fun getSingleLocation() = locationData.getSingleLocation()
 }

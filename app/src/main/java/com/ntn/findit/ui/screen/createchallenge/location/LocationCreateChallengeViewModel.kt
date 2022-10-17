@@ -1,5 +1,6 @@
 package com.ntn.findit.ui.screen.createchallenge.location
 
+import android.location.Address
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,6 +25,10 @@ class LocationCreateChallengeViewModel : ViewModel() {
     private val _cameraPosition = MutableLiveData<CameraPositionState>()
     val cameraPosition = _cameraPosition
 
+    fun onLocationBarChange(str:String){
+        _searchBar.value = str
+    }
+
     fun onMarkerChange(latLng: LatLng) {
         _marker.value = latLng
         _cameraPosition.value = CameraPositionState(CameraPosition(latLng, 10f, 0.0F, 0.0F))
@@ -37,6 +42,11 @@ class LocationCreateChallengeViewModel : ViewModel() {
     fun onLocationRequestFullFilled(latLng: LatLng) {
         onMarkerChange(latLng)
         _requestedLocation.value = false
+    }
+
+    fun onLocationSearchRequest(address: Address){
+        onMarkerChange(LatLng(address.latitude, address.longitude))
+        _searchBar.value = ""
     }
 
 

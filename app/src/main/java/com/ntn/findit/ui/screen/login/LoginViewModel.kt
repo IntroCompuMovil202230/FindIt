@@ -37,6 +37,7 @@ class LoginViewModel : ViewModel() {
 
 
     fun login(): Boolean{
+        Log.d("Mio", "fdxggfsdgfd")
         var success : Boolean = false
         ParseUser.logInInBackground("Jerry", "showmethemoney") { user, e ->
             if (user != null) {

@@ -6,6 +6,8 @@ import android.Manifest
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
@@ -26,10 +28,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.*
 import com.google.android.gms.maps.GoogleMapOptions
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
-import com.ntn.findit.LocalizationViewModel
+import com.ntn.findit.generalviewmodels.GeoCoderViewModel
+import com.ntn.findit.generalviewmodels.LocalizationViewModel
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.ntn.findit.ui.theme.LightWhite
 
@@ -65,12 +67,15 @@ fun Title() {
 }
 
 @Composable
-fun SearchBar(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
+fun SearchBar(
+    _viewModel: LocationCreateChallengeViewModel = viewModel(),
+    _geocoderViewModel: GeoCoderViewModel = viewModel()
+) {
     val searchBar: String by _viewModel.searchBar.observeAsState("")
     TextField(
         value = searchBar,
         label = { Text("Busca un lugar") },
-        onValueChange = {},
+        onValueChange = {_viewModel.onLocationBarChange(it)},
         leadingIcon = { Icon(Icons.Default.Search, "") },
         shape = RoundedCornerShape(50),
         colors = TextFieldDefaults.textFieldColors(
@@ -78,12 +83,23 @@ fun SearchBar(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
         ),
+        keyboardOptions = KeyboardOptions(imeAction = androidx.compose.ui.text.input.ImeAction.Done),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                val t = _geocoderViewModel.getFromLocation(searchBar)
+                if (t != null) {
+                    _viewModel.onLocationSearchRequest(t)
+                }
+            }
+        ),
         modifier = Modifier.fillMaxWidth()
     )
 }
 
 @Composable
-fun MiniMap(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
+fun MiniMap(
+    _viewModel: LocationCreateChallengeViewModel = viewModel()
+) {
     val markerState by _viewModel.marker.observeAsState()
     val uiSettings by remember { mutableStateOf(MapUiSettings(mapToolbarEnabled = false)) }
     val properties by remember {
@@ -114,7 +130,7 @@ fun MiniMap(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
                 Marker(
                     state = it,
                     title = "Tu ubicación",
-                    snippet = "Marker in Singapore"
+                    snippet = "Donde quieres tu lugar de destino"
                 )
             }
         }
@@ -185,9 +201,9 @@ private fun RequestLocationPermission(
     when {
         permissionState.status.isGranted -> {
             val location by _locationViewModel.requestLocationUpdates().observeAsState()
-            if(location == null){
+            if (location == null) {
                 Log.d("Mio", "Location: null")
-            }else{
+            } else {
                 Log.d("Mio", "HOLAAAAAAA")
                 location?.let { LatLng(it.latitude, it.longitude) }
                     ?.let { _viewModel.onLocationRequestFullFilled(it) }

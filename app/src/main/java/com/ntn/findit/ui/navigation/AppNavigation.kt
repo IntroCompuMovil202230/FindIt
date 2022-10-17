@@ -14,7 +14,7 @@ import com.ntn.findit.ui.screen.registration.RegistrationScreen
 
 @Composable
 fun AppNavigation(navController: NavHostController){
-    NavHost(navController = navController, startDestination = AppScreens.TestScreen.route){
+    NavHost(navController = navController, startDestination = AppScreens.LoginScreen.route){
         composable(route = AppScreens.RegistrationScreen.route){
             RegistrationScreen(navController = navController)
         }
@@ -25,8 +25,8 @@ fun AppNavigation(navController: NavHostController){
             MainScreenView(principalNavController = navController)
         }
         composable(route = AppScreens.TestScreen.route){
-            //LocationCreateChallengeScreen(navController = navController)
-            LoginScreen(navController = navController)
+            LocationCreateChallengeScreen(navController = navController)
+            //LoginScreen(navController = navController)
         }
     }
 }

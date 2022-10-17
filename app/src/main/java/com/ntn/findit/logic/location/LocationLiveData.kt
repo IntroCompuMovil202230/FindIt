@@ -4,10 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
 import android.os.Looper
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.google.android.gms.location.*
-import com.google.android.gms.tasks.Task
 import com.ntn.findit.model.LocationDetails
 
 class LocationLiveData(context: Context) : LiveData<LocationDetails>() {
@@ -47,11 +45,6 @@ class LocationLiveData(context: Context) : LiveData<LocationDetails>() {
             locationCallback,
             Looper.getMainLooper()
         )
-    }
-
-    @SuppressLint("MissingPermission")
-    fun getSingleLocation(): Task<Location> {
-        return fusedLocationProviderClient.lastLocation
     }
 
     fun setLocationData(location: Location) {
