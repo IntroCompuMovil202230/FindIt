@@ -38,12 +38,12 @@ class LoginViewModel : ViewModel() {
 
     fun login(): Boolean{
         var success : Boolean = false
-        ParseUser.logInInBackground("Jerry", "showmethemoney") { user, e ->
+        ParseUser.logInInBackground(username.value.toString(), password.value.toString()) { user, e ->
             if (user != null) {
-                Log.d("Mio", "Signed successfull")
+                Log.d("Mio", "Signed successfull" + username.value.toString() +password.value.toString() )
                 success = true
             } else {
-                Log.d("Mio", "Failed log")
+                Log.d("Mio", "Failed log" + username.value.toString() + password.value.toString())
                 Log.d("Mio", e.toString())
             }
         }
