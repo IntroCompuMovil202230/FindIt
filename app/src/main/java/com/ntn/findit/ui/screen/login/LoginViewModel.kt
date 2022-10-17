@@ -1,8 +1,10 @@
 package com.ntn.findit.ui.screen.login
 
-import androidx.lifecycle.*
-import androidx.navigation.NavController
-import com.ntn.findit.ui.navigation.AppScreens
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.parse.ParseUser
 
 
 class LoginViewModel : ViewModel() {
@@ -32,5 +34,21 @@ class LoginViewModel : ViewModel() {
 
     private fun validateFields() =
         username.value?.isNotEmpty() == true && password.value?.isNotEmpty() == true
+
+
+    fun login(): Boolean{
+        var success : Boolean = false
+        ParseUser.logInInBackground("Jerry", "showmethemoney") { user, e ->
+            if (user != null) {
+                Log.d("Mio", "Signed successfull")
+                success = true
+            } else {
+                Log.d("Mio", "Failed log")
+                Log.d("Mio", e.toString())
+            }
+        }
+        return success
+
+    }
 
 }

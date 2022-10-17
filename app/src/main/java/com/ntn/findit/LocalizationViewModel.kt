@@ -7,5 +7,6 @@ import com.ntn.findit.logic.location.LocationLiveData
 class LocalizationViewModel(application: Application) : AndroidViewModel(application) {
 
     private val locationData = LocationLiveData(application)
-    fun getLocationData() = locationData
+    fun requestLocationUpdates() = locationData
+    fun getSingleLocation() = locationData.getSingleLocation()
 }

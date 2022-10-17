@@ -4,16 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
 import android.os.Looper
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.google.android.gms.location.*
+import com.google.android.gms.tasks.Task
 import com.ntn.findit.model.LocationDetails
 
 class LocationLiveData(context: Context) : LiveData<LocationDetails>() {
 
 
     companion object {
-        const val SHORT_GPS_UPDATE_INTERVAL = 500L
-        const val LONG_GPS_UPDATE_INTERVAL = 1000L
+        private const val SHORT_GPS_UPDATE_INTERVAL = 500L
+        private const val LONG_GPS_UPDATE_INTERVAL = 1000L
 
         val locationRequest = LocationRequest.create()
             .setInterval(LONG_GPS_UPDATE_INTERVAL)
@@ -38,7 +40,6 @@ class LocationLiveData(context: Context) : LiveData<LocationDetails>() {
         startLocationUpdates()
     }
 
-
     @SuppressLint("MissingPermission")
     fun startLocationUpdates() {
         fusedLocationProviderClient.requestLocationUpdates(
@@ -46,6 +47,11 @@ class LocationLiveData(context: Context) : LiveData<LocationDetails>() {
             locationCallback,
             Looper.getMainLooper()
         )
+    }
+
+    @SuppressLint("MissingPermission")
+    fun getSingleLocation(): Task<Location> {
+        return fusedLocationProviderClient.lastLocation
     }
 
     fun setLocationData(location: Location) {

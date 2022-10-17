@@ -34,7 +34,12 @@ fun LoginScreen(navController: NavController, _viewModel: LoginViewModel = viewM
         CustomSpacer(14.0)
         FootSection(
             _viewModel,
-            buttonAction = { navController.navigate(AppScreens.MainScreen.route) },
+            buttonAction = {
+                val next = _viewModel.login()
+                if (next) {
+                    navController.navigate(AppScreens.MainScreen.route)
+                }
+            },
             textActionClick = { navController.navigate(AppScreens.RegistrationScreen.route) },
         )
     }

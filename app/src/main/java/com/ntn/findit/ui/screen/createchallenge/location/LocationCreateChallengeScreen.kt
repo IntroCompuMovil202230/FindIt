@@ -20,13 +20,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.*
 import com.google.android.gms.maps.GoogleMapOptions
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
 import com.ntn.findit.LocalizationViewModel
 import com.ntn.findit.ui.screen.shared.CustomSpacer
@@ -88,6 +89,8 @@ fun MiniMap(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
     val properties by remember {
         mutableStateOf(MapProperties(mapType = MapType.NORMAL))
     }
+    val cameraPositionState by _viewModel.cameraPosition.observeAsState(CameraPositionState())
+
 
     Box(
         modifier = Modifier
@@ -101,14 +104,16 @@ fun MiniMap(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
             uiSettings = uiSettings,
             properties = properties,
             modifier = Modifier.fillMaxWidth(),
-            onMapLongClick = { _viewModel.onMarkerChange(it)
-            }
+            onMapLongClick = {
+                _viewModel.onMarkerChange(it)
+            },
+            cameraPositionState = cameraPositionState
         )
         {
             markerState?.let { MarkerState(it) }?.let {
                 Marker(
                     state = it,
-                    title = it.toString(),
+                    title = "Tu ubicación",
                     snippet = "Marker in Singapore"
                 )
             }
@@ -121,19 +126,17 @@ fun MiniMap(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
 @Composable
 fun Foot(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
     val nextEnabled by _viewModel.nextEnable.observeAsState(false)
-    var requestedLocation by remember {
-        mutableStateOf(false)
-    }
+    val requestedLocation by _viewModel.requestedLocation.observeAsState(false)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
 
-        if (requestedLocation){
+        if (requestedLocation) {
             RequestLocationPermission()
         }
         OutlinedButton(onClick = {
-            requestedLocation = true
+            _viewModel.onRequestedLocation()
         }) {
             Icon(imageVector = Icons.Default.LocationOn, contentDescription = "")
             CustomSpacer(2.0)
@@ -155,7 +158,10 @@ fun Foot(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
 
 @ExperimentalPermissionsApi
 @Composable
-private fun RequestLocationPermission() {
+private fun RequestLocationPermission(
+    _viewModel: LocationCreateChallengeViewModel = viewModel(),
+    _locationViewModel: LocalizationViewModel = viewModel()
+) {
     val permissionState = rememberPermissionState(
         permission = Manifest.permission.ACCESS_FINE_LOCATION
     )
@@ -164,7 +170,7 @@ private fun RequestLocationPermission() {
         key1 = lifecycleOwner,
         effect = {
             val observer = LifecycleEventObserver { _, event ->
-                if(event == Lifecycle.Event.ON_START) {
+                if (event == Lifecycle.Event.ON_START) {
                     permissionState.launchPermissionRequest()
                 }
             }
@@ -177,18 +183,24 @@ private fun RequestLocationPermission() {
     )
 
     when {
-        permissionState.status.isGranted ->{
-            Log.d("Mio", "Consedido")
+        permissionState.status.isGranted -> {
+            val location by _locationViewModel.requestLocationUpdates().observeAsState()
+            if(location == null){
+                Log.d("Mio", "Location: null")
+            }else{
+                Log.d("Mio", "HOLAAAAAAA")
+                location?.let { LatLng(it.latitude, it.longitude) }
+                    ?.let { _viewModel.onLocationRequestFullFilled(it) }
+                Log.d("Mio", "Message: ${location?.latitude}")
+            }
         }
         permissionState.status.shouldShowRationale -> {
             Log.d("Mio", "Retry permission")
         }
-        else ->{
+        else -> {
             Log.d("Mio", "Denied")
         }
     }
-
-
 }
 
 @Composable

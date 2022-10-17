@@ -25,7 +25,8 @@ fun AppNavigation(navController: NavHostController){
             MainScreenView(principalNavController = navController)
         }
         composable(route = AppScreens.TestScreen.route){
-            LocationCreateChallengeScreen(navController = navController)
+            //LocationCreateChallengeScreen(navController = navController)
+            LoginScreen(navController = navController)
         }
     }
 }

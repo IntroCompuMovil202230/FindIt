@@ -78,6 +78,10 @@ dependencies {
     //Permissions
     implementation "com.google.accompanist:accompanist-permissions:0.26.5-rc"
 
+    //parse
+    implementation 'com.parse:parse-android:+'
+
+
 
 
 }
