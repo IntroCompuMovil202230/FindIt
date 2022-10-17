@@ -16,13 +16,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.R
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.ntn.findit.ui.screen.shared.SearchBarField
 
 
 @Composable
-fun ChallengeInnerScreen(){
+fun ChallengeInnerScreen(navController: NavController){
     Column(modifier = Modifier.padding(vertical = 45.dp, horizontal = 25.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
         SearchBar()
@@ -108,5 +110,5 @@ fun CustomCard(){
 @Composable
 @Preview(showSystemUi = true)
 fun Preview(){
-    ChallengeInnerScreen()
+    ChallengeInnerScreen(rememberNavController())
 }

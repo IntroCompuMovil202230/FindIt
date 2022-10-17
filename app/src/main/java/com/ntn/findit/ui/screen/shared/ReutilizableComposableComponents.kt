@@ -24,32 +24,33 @@ fun CustomSpacer(padding: Double = 14.0){
 
 
 @Composable
-fun CustomButton(text: String){
+fun CustomButton(text: String, enabled: Boolean, onClick: () -> Unit){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { onClick() },
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(40)
+        shape = RoundedCornerShape(40),
+        enabled = enabled
     ) {
         Text(text = text)
     }
 }
 
 @Composable
-fun CustomOutlinedTextField(hint: String, modifier: Modifier = Modifier.fillMaxWidth()){
-    OutlinedTextField(value = "", onValueChange = {}, modifier = modifier, label = { Text(hint) }, shape = RoundedCornerShape(20))
+fun CustomOutlinedTextField(value: String, onTextChange: (String) -> Unit,hint: String, modifier: Modifier = Modifier.fillMaxWidth()){
+    OutlinedTextField(value = value, onValueChange = onTextChange, modifier = modifier, label = { Text(hint) }, shape = RoundedCornerShape(20))
 }
 
 @Composable
-fun CustomPasswordOutlinedTextField(hint: String){
-    OutlinedTextField(value = "", onValueChange = {}, modifier = Modifier.fillMaxWidth(),
+fun CustomPasswordOutlinedTextField(value:String, onTextChange: (String) -> Unit,hint: String){
+    OutlinedTextField(value = value, onValueChange = onTextChange, modifier = Modifier.fillMaxWidth(),
         label = { Text(hint) },
         shape = RoundedCornerShape(20),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
     )
 }
 @Composable
-fun CustomClickableText(text: String){
-    ClickableText(text = AnnotatedString(text), onClick = {/*TODO*/ })
+fun CustomClickableText(text: String, onClick: () -> Unit){
+    ClickableText(text = AnnotatedString(text), onClick = { onClick() })
 
 }
 

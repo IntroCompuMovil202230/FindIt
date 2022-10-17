@@ -15,7 +15,7 @@ import com.ntn.findit.ui.screen.mainscreen.innerscreen.mychallenge.MyChallengeIn
 fun MainScreenNavigationGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = BottomNavigationBar.Challenges.screen_route) {
         composable(BottomNavigationBar.Challenges.screen_route) {
-            ChallengeInnerScreen()
+            ChallengeInnerScreen(navController)
         }
         composable(BottomNavigationBar.MyChallenges.screen_route) {
             MyChallengeInnerScreen()
