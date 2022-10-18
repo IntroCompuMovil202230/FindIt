@@ -16,10 +16,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.ntn.findit.ui.theme.FBlue
+import com.ntn.findit.ui.theme.LightWhite
 
 
 @Composable
@@ -47,12 +50,13 @@ fun CustomOutlinedTextField(
     hint: String,
     modifier: Modifier = Modifier.fillMaxWidth()
 ) {
-    OutlinedTextField(value = value,
+    OutlinedTextField(
+        value = value,
         onValueChange = onTextChange,
         modifier = modifier,
         label = { Text(hint) },
         shape = RoundedCornerShape(20),
-        )
+    )
 }
 
 @Composable
@@ -82,7 +86,9 @@ fun CustomPasswordOutlinedTextField(value: String, onTextChange: (String) -> Uni
 
 @Composable
 fun CustomClickableText(text: String, onClick: () -> Unit) {
-    ClickableText(text = AnnotatedString(text), onClick = { onClick() })
+    ClickableText(
+        text = AnnotatedString(text, spanStyle = SpanStyle(color = FBlue)),
+        onClick = { onClick() })
 
 }
 
@@ -94,7 +100,7 @@ fun SearchBarField() {
         leadingIcon = { Icon(Icons.Default.Search, "") },
         shape = RoundedCornerShape(50),
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color.LightGray, //TODO Change color
+            backgroundColor = LightWhite, //TODO Change color
             focusedIndicatorColor = Color.Transparent, unfocusedIndicatorColor = Color.Transparent
         ),
     )
@@ -102,12 +108,13 @@ fun SearchBarField() {
 
 @Composable
 fun SearchBarFieldFull() {
-    TextField(value = "",
+    TextField(
+        value = "",
         onValueChange = {},
         leadingIcon = { Icon(Icons.Default.Search, "") },
         shape = RoundedCornerShape(50),
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color.LightGray, //TODO Change color
+            backgroundColor = LightWhite,
             focusedIndicatorColor = Color.Transparent, unfocusedIndicatorColor = Color.Transparent
         ),
         modifier = Modifier.fillMaxWidth()

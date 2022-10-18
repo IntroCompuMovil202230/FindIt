@@ -4,7 +4,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.parse.ParseException
 import com.parse.ParseUser
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class LoginViewModel : ViewModel() {
@@ -17,6 +22,9 @@ class LoginViewModel : ViewModel() {
 
     private val _loginEnable = MutableLiveData<Boolean>()
     val loginEnable: LiveData<Boolean> = _loginEnable
+
+    private val _loginSuccess = MutableLiveData<Boolean>()
+    val loginSuccess = _loginSuccess
 
     fun onUsernameChange(username: String) {
         _username.value = username
@@ -36,19 +44,14 @@ class LoginViewModel : ViewModel() {
         username.value?.isNotEmpty() == true && password.value?.isNotEmpty() == true
 
 
-    fun login(): Boolean{
-        Log.d("Mio", "fdxggfsdgfd")
-        var success : Boolean = false
-        ParseUser.logInInBackground("Jerry", "showmethemoney") { user, e ->
-            if (user != null) {
-                Log.d("Mio", "Signed successfull")
-                success = true
-            } else {
-                Log.d("Mio", "Failed log")
-                Log.d("Mio", e.toString())
-            }
+    fun login(){
+        try {
+            ParseUser.logIn(_username.value, _password.value)
+            _loginSuccess.value = true
+        }catch (e: ParseException){
+
         }
-        return success
+
 
     }
 

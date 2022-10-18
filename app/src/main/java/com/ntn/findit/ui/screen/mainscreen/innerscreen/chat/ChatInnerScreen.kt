@@ -17,12 +17,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ntn.findit.R
+import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.ntn.findit.ui.screen.shared.SearchBarFieldFull
 
 @Composable
 fun ChatInnerScreen() {
     Column(Modifier.padding(vertical = 45.dp, horizontal = 25.dp)) {
         SearchBarFieldFull()
+        CustomSpacer(15.0)
         ChatList()
     }
 }

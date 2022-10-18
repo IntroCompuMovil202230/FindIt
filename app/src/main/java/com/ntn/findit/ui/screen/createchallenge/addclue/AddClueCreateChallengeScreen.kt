@@ -14,11 +14,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.ui.screen.shared.CustomDivider
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 
 @Composable
-fun AddClueCreateChallengeScreen() {
+fun AddClueCreateChallengeScreen(navController: NavController) {
     Column(
         Modifier.padding(vertical = 45.dp, horizontal = 25.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -95,5 +97,5 @@ fun Body() {
 @Preview(showSystemUi = true)
 @Composable
 fun Preview() {
-    AddClueCreateChallengeScreen()
+    AddClueCreateChallengeScreen(rememberNavController())
 }

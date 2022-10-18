@@ -1,5 +1,7 @@
-package com.ntn.findit.ui.screen .createchallenge.basicinfo
+package com.ntn.findit.ui.screen.createchallenge.basicinfo
 
+import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +12,9 @@ class BasicInfoCreateChallengeViewModel: ViewModel() {
 
     private val _description = MutableLiveData<String>()
     val description: LiveData<String> = _description
+
+    private val _imageUri = MutableLiveData<Uri?>()
+    val imageUri = _imageUri
 
     private val _continueEnable = MutableLiveData<Boolean>()
     val continueEnable: LiveData<Boolean> = _continueEnable
@@ -24,9 +29,15 @@ class BasicInfoCreateChallengeViewModel: ViewModel() {
         onFormChange()
     }
 
-    fun onFormChange(){
+    private fun onFormChange(){
         _continueEnable.value = checkFields()
     }
     private fun checkFields() =
-         _clueName.value?.isNotEmpty() == true && _description.value?.isNotEmpty() == true
+         _clueName.value?.isNotEmpty() == true && _description.value?.isNotEmpty() == true && _imageUri.value != null
+
+    fun onUriChange(uri: Uri) {
+        Log.d("Mio", "URI: ${uri}")
+        _imageUri.value = uri
+        onFormChange()
+    }
 }

@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ntn.findit.R
 import com.ntn.findit.ui.screen.shared.CustomSpacer
+import com.ntn.findit.ui.theme.LightWhite
 
 @Composable
 fun SeeChallengeInfo() {
@@ -88,7 +89,7 @@ fun Body2() {
         ) {
         Column(
             modifier = Modifier
-                .background(Color.LightGray)
+                .background(LightWhite)
                 .padding(horizontal = 27.dp, vertical = 3.dp)
         ) {
             Text(

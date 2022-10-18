@@ -5,7 +5,7 @@ import com.parse.Parse;
 
 class App : Application() {
     companion object {
-        const val PARSE_SERVER = "http://3.80.151.200:1337"
+        const val PARSE_SERVER = "http://3.80.151.200:1337/parse"
     }
 
     override fun onCreate() {

@@ -1,8 +1,14 @@
 package com.ntn.findit.ui.screen.registration
 
+import android.util.Log
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.parse.Parse
+import com.parse.ParseException
+import com.parse.ParseUser
+import com.parse.SignUpCallback
 
 
 class RegistrationViewModel : ViewModel() {
@@ -20,6 +26,9 @@ class RegistrationViewModel : ViewModel() {
 
     private val _registrationEnable = MutableLiveData<Boolean>()
     val registrationEnable: LiveData<Boolean> = _registrationEnable
+
+    private val _registrationSuccess = MutableLiveData<Boolean>()
+    val registrationSuccess: LiveData<Boolean> = _registrationSuccess
 
     fun onUsernameChange(username: String) {
         _username.value = username
@@ -41,7 +50,7 @@ class RegistrationViewModel : ViewModel() {
         onRegistrationChange()
     }
 
-    fun onRegistrationChange() {
+    private fun onRegistrationChange() {
         _registrationEnable.value = validateFields()
     }
 
@@ -50,6 +59,18 @@ class RegistrationViewModel : ViewModel() {
                 password.value?.isNotEmpty() == true &&
                 email.value?.isNotEmpty() == true &&
                 passwordConfirmation.value?.isNotEmpty() == true &&
-                password.value == passwordConfirmation.value
+                password.value == passwordConfirmation.value && Patterns.EMAIL_ADDRESS.matcher(email.value.toString()).matches()
+
+    fun onRegistrationRequest() {
+        val user = ParseUser();
+        user.username = username.value
+        user.setPassword(password.value)
+        user.email = email.value
+        try{
+            user.signUp()
+            _registrationSuccess.value = true
+        }catch (e: ParseException){}
+
+    }
 
 }

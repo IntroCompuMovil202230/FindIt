@@ -22,11 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import kotlin.math.round
 
 @Composable
-fun CluesCreateChallengeScreen() {
+fun CluesCreateChallengeScreen(navController: NavController) {
     Column(Modifier.padding(vertical = 45.dp, horizontal = 25.dp)) {
         LinearProgressIndicator(progress = 0.7f, modifier = Modifier.fillMaxWidth())
         CustomSpacer(20.0)
@@ -113,5 +115,5 @@ fun Foot() {
 @Composable
 @Preview(showSystemUi = true)
 fun Preview() {
-    CluesCreateChallengeScreen()
+    CluesCreateChallengeScreen(rememberNavController())
 }

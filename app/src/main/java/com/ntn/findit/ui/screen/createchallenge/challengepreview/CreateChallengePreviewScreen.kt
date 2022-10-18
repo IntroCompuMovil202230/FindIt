@@ -14,12 +14,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.R
 import com.ntn.findit.ui.screen.challengeinfo.Body
 import com.ntn.findit.ui.screen.challengeinfo.Body2
 
 @Composable
-fun CreateChallengePreviewScreen() {
+fun CreateChallengePreviewScreen(navController: NavController) {
     val scrollState = rememberScrollState()
     Column(
         verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -69,5 +71,5 @@ fun Foot(){
 @Composable
 @Preview(showSystemUi = true)
 fun Preview() {
-    CreateChallengePreviewScreen()
+    CreateChallengePreviewScreen(rememberNavController())
 }

@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import com.ntn.findit.R
 import com.ntn.findit.ui.screen.shared.CustomSpacer
+import com.parse.ParseUser
 
 @Composable
 fun AccountInnerScreen() {
@@ -42,7 +43,7 @@ fun TitleHeader() {
             modifier = Modifier.clip(CircleShape)
         )
         CustomSpacer()
-        Text(text = "LucasScoot", fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
+        Text(text = ParseUser.getCurrentUser().username, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
 
     }
 }
@@ -84,7 +85,7 @@ private fun CustomInnerRow(text: String) {
         )
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            text = "Lucas Scoot",
+            text = ParseUser.getCurrentUser().username,
             fontWeight = FontWeight.Medium,
             fontSize = 15.sp,
             modifier = Modifier.padding(horizontal = 8.dp)

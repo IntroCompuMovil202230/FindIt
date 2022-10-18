@@ -1,14 +1,11 @@
 package com.ntn.findit.ui.screen.mainscreen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -18,14 +15,17 @@ import com.ntn.findit.ui.screen.mainscreen.navigation.BottomNavigationBar
 import com.ntn.findit.ui.screen.mainscreen.navigation.MainScreenNavigationGraph
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreenView(principalNavController: NavHostController){
-
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomBar(navController = navController)},
         topBar = {},
-    ) { MainScreenNavigationGraph(navController = navController) }
+
+    ) {
+        MainScreenNavigationGraph(navController = navController)
+    }
 }
 
 @Composable
@@ -54,7 +54,7 @@ fun RowScope.AddItem(
 ){
     BottomNavigationItem(
         label = { Text(screen.title)},
-        icon = { Icon(painter = painterResource(id = screen.icon), contentDescription = "sdf") },
+        icon = { Icon(imageVector = screen.icon, contentDescription = "sdf") },
         selected = currentDestination?.hierarchy?.any{
             it.route == screen.screen_route
         } == true,
