@@ -37,10 +37,10 @@ fun LoginScreen(navController: NavController, _viewModel: LoginViewModel = viewM
             buttonAction = {
                 val next = _viewModel.login()
                 if (next) {
-                    navController.navigate(AppScreens.MainScreen.route)
+                    navController.navigate(AppScreens.LoginScreen.route)
                 }
             },
-            textActionClick = { navController.navigate(AppScreens.RegistrationScreen.route) },
+            textActionClick = { navController.navigate(AppScreens.BioAuthActivity.route) },
         )
     }
 

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Find it</string>
+    <string name="title_activity_compass">CompassActivity</string>
+    <string name="title_activity_bio_auth">BioAuthActivity</string>
 </resources>

@@ -28,5 +28,8 @@ fun AppNavigation(navController: NavHostController){
             //LocationCreateChallengeScreen(navController = navController)
             LoginScreen(navController = navController)
         }
+        composable(route = AppScreens.BioAuthActivity.route){
+            LoginScreen(navController = navController)
+        }
     }
 }
