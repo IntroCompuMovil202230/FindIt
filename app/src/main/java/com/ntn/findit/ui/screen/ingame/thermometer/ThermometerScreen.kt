@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ntn.findit.generalviewmodels.CompassViewModel
 
 @Composable
 fun ThermometerScreen() {
@@ -25,13 +25,14 @@ fun ThermometerScreen() {
 }
 
 @Composable
-fun Thermometer(_viewModel : GameViewModel = viewModel()) {
-    val temperature : Double by _viewModel.temperature.observeAsState(0.0)
+fun Thermometer(_viewModel: GameViewModel = viewModel(), _compassViewModel: CompassViewModel = viewModel()) {
+    val temperature: Double by _viewModel.temperature.observeAsState(0.0)
+    val degrees: Int by _compassViewModel.requestCompassSensorUpdates().observeAsState(0)
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-    ) { // TODO CAMBIAR COLOR
+    ) {
         OutlinedButton(
             onClick = { /*TODO*/ },
             border = BorderStroke(1.dp, Color.Black),
@@ -50,8 +51,19 @@ fun Thermometer(_viewModel : GameViewModel = viewModel()) {
         ) {
             Text(text = "Mapa")
         }
-        Text(text = temperature.toString(), fontSize = 100.sp, modifier = Modifier.align(Alignment.Center))
+        Text(
+            text = temperature.toString(),
+            fontSize = 100.sp,
+            modifier = Modifier.align(Alignment.Center)
+        )
 
+        Text(
+            text = degrees.toString(),
+            fontSize = 30.sp,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 190.dp)
+        )
         OutlinedButton(
             onClick = { /*TODO*/ },
             modifier = Modifier
