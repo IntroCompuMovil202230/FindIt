@@ -9,12 +9,15 @@ import androidx.compose.material.Button
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun ThermometerScreen() {
@@ -22,7 +25,8 @@ fun ThermometerScreen() {
 }
 
 @Composable
-fun Thermometer() {
+fun Thermometer(_viewModel : GameViewModel = viewModel()) {
+    val temperature : Double by _viewModel.temperature.observeAsState(0.0)
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -38,7 +42,7 @@ fun Thermometer() {
             Text(text = "12:00")
         }
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = { _viewModel.onStateChange(GameState.GameMapScreen) },
             border = BorderStroke(1.dp, Color.Blue),
             modifier = Modifier
                 .align(Alignment.TopEnd)
@@ -46,20 +50,13 @@ fun Thermometer() {
         ) {
             Text(text = "Mapa")
         }
-        Text(text = "100.0~", fontSize = 100.sp, modifier = Modifier.align(Alignment.Center))
+        Text(text = temperature.toString(), fontSize = 100.sp, modifier = Modifier.align(Alignment.Center))
+
         OutlinedButton(
             onClick = { /*TODO*/ },
             modifier = Modifier
-                .align(Alignment.BottomStart)
-                .padding(start = 30.dp, bottom = 60.dp)
-        ) {
-            Text(text = "Chequear termómetro")
-        }
-        OutlinedButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(end = 30.dp, bottom = 60.dp)
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 60.dp)
         ) {
             Text(text = "Ver pistas")
         }

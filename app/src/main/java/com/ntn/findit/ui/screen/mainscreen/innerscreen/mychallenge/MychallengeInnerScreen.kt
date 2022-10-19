@@ -1,6 +1,5 @@
 package com.ntn.findit.ui.screen.mainscreen.innerscreen.mychallenge
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,9 +18,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.R
-import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
-import com.ntn.findit.ui.screen.createchallenge.CreateChallengeGraph
-import com.ntn.findit.ui.screen.mainscreen.navigation.BottomNavigationBar
+import com.ntn.findit.ui.navigation.Graph
+import com.ntn.findit.ui.screen.mainscreen.MainScreenView
+
 
 @Composable
 fun MyChallengeInnerScreen(navController: NavController) {
@@ -56,7 +55,13 @@ fun SearchBar(navController: NavController) {
         )
         OutlinedButton(
             onClick = {
-                navController.navigate(BottomNavigationBar.CreateChallenge.screen_route)
+                navController.popBackStack()
+
+                navController.navigate(Graph.CREATE_CHALLENGE) {
+                    popUpTo(Graph.HOME) {
+                        inclusive = true
+                    }
+                }
             },
             modifier = Modifier.weight(1f),
         ) {

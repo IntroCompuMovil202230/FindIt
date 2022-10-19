@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.ntn.findit.ui.navigation.AppScreens
+import com.ntn.findit.ui.navigation.Graph
 import com.ntn.findit.ui.screen.shared.*
 import kotlinx.coroutines.launch
 
@@ -65,11 +65,8 @@ fun RegistrationScreen(
                 _viewModel.onRegistrationRequest()
             }.invokeOnCompletion {
                 if (_viewModel.registrationSuccess.value == true) {
-                    navController.navigate(AppScreens.MainScreen.route) {
-                        popUpTo(AppScreens.LoginScreen.route) {
-                            inclusive = true
-                        }
-                    }
+                    navController.popBackStack()
+                    navController.navigate(Graph.HOME)
                 } else {
                     Toast.makeText(context, "Error SigningUp, try, again", Toast.LENGTH_LONG).show()
                 }

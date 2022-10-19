@@ -4,6 +4,7 @@ package com.ntn.findit.ui.screen.createchallenge.location
 
 import android.Manifest
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -17,6 +18,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,8 +34,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
 import com.ntn.findit.generalviewmodels.GeoCoderViewModel
 import com.ntn.findit.generalviewmodels.LocalizationViewModel
+import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.ntn.findit.ui.theme.LightWhite
+import kotlinx.coroutines.launch
 
 @Composable
 fun LocationCreateChallengeScreen(
@@ -53,7 +57,7 @@ fun LocationCreateChallengeScreen(
         CustomSpacer(5.0)
         MiniMap()
         Spacer(modifier = Modifier.weight(1f))
-        Foot()
+        Foot(navController)
     }
 }
 
@@ -72,10 +76,12 @@ fun SearchBar(
     _geocoderViewModel: GeoCoderViewModel = viewModel()
 ) {
     val searchBar: String by _viewModel.searchBar.observeAsState("")
+    val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
     TextField(
         value = searchBar,
         label = { Text("Busca un lugar") },
-        onValueChange = {_viewModel.onLocationBarChange(it)},
+        onValueChange = { _viewModel.onLocationBarChange(it) },
         leadingIcon = { Icon(Icons.Default.Search, "") },
         shape = RoundedCornerShape(50),
         colors = TextFieldDefaults.textFieldColors(
@@ -86,10 +92,20 @@ fun SearchBar(
         keyboardOptions = KeyboardOptions(imeAction = androidx.compose.ui.text.input.ImeAction.Done),
         keyboardActions = KeyboardActions(
             onDone = {
-                val t = _geocoderViewModel.getFromLocation(searchBar)
-                if (t != null) {
-                    _viewModel.onLocationSearchRequest(t)
+                coroutineScope.launch {
+                    val t = _geocoderViewModel.getFromLocation(searchBar)
+                    if (t != null) {
+                        _viewModel.onLocationSearchRequest(t)
+                    }else{
+                        Toast.makeText(context, "Error on geocoder", Toast.LENGTH_LONG).show()
+                    }
+                }.runCatching {
+                    if(this.isCancelled){
+                        Toast.makeText(context, "Error on geocoder", Toast.LENGTH_LONG).show()
+                    }
+
                 }
+
             }
         ),
         modifier = Modifier.fillMaxWidth()
@@ -140,7 +156,7 @@ fun MiniMap(
 
 @ExperimentalPermissionsApi
 @Composable
-fun Foot(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
+fun Foot(navController: NavController, _viewModel: LocationCreateChallengeViewModel = viewModel()) {
     val nextEnabled by _viewModel.nextEnable.observeAsState(false)
     val requestedLocation by _viewModel.requestedLocation.observeAsState(false)
     Column(
@@ -165,7 +181,10 @@ fun Foot(_viewModel: LocationCreateChallengeViewModel = viewModel()) {
                 Text(text = "Anterior")
             }
             CustomSpacer(30.0)
-            Button(onClick = { /*TODO*/ }, enabled = nextEnabled) {
+            Button(
+                onClick = { navController.navigate(CreateChallenge.AddClue.route) },
+                enabled = nextEnabled
+            ) {
                 Text(text = "Siguiente")
             }
         }

@@ -1,14 +1,11 @@
 package com.ntn.findit.ui.screen.login
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.Snackbar
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
@@ -24,8 +21,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.R
-import com.ntn.findit.app.App
-import com.ntn.findit.ui.navigation.AppScreens
+import com.ntn.findit.ui.navigation.AuthScreen
+import com.ntn.findit.ui.navigation.Graph
 import com.ntn.findit.ui.screen.shared.*
 import kotlinx.coroutines.launch
 
@@ -49,18 +46,15 @@ fun LoginScreen(navController: NavController, _viewModel: LoginViewModel = viewM
                     _viewModel.login()
                 }.invokeOnCompletion {
                     if (_viewModel.loginSuccess.value == true) {
-                        navController.navigate(AppScreens.MainScreen.route) {
-                            popUpTo(AppScreens.LoginScreen.route) {
-                                inclusive = true
-                            }
-                        }
+                        navController.popBackStack()
+                        navController.navigate(Graph.HOME)
                     } else {
                         Toast.makeText(context, "Error when LoginIn, try again", Toast.LENGTH_LONG)
                             .show()
                     }
                 }
             },
-            textActionClick = { navController.navigate(AppScreens.RegistrationScreen.route) },
+            textActionClick = { navController.navigate(AuthScreen.SignUp.route) },
         )
     }
 

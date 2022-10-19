@@ -1,7 +1,5 @@
 package com.ntn.findit.ui.screen.createchallenge.basicinfo
 
-import android.net.Uri
-import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -17,9 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,14 +23,13 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import com.ntn.findit.R
 import com.ntn.findit.logic.fileprovider.ComposeFileProvider
-import com.ntn.findit.ui.screen.createchallenge.CreateChallengeGraph
+import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
 import com.ntn.findit.ui.screen.shared.CustomOutlinedTextField
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import kotlinx.coroutines.launch
@@ -127,8 +122,6 @@ fun Body(_viewModel: BasicInfoCreateChallengeViewModel = viewModel()) {
                 painter = painter,
                 contentDescription = ""
             )
-
-
         }
     }
 }
@@ -147,7 +140,7 @@ fun Foot(
         }
         val enabled by _viewModel.continueEnable.observeAsState(false)
         Button(
-            onClick = { navController.navigate(CreateChallengeGraph.ChallengeLocation.route) },
+            onClick = { navController.navigate(CreateChallenge.ChallengeLocation.route) },
             enabled = enabled
         ) {
             Text(text = "Siguiente")

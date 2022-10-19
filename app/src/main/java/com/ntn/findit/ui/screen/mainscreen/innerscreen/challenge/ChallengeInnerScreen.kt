@@ -19,14 +19,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.R
+import com.ntn.findit.ui.navigation.Graph
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.ntn.findit.ui.screen.shared.SearchBarField
 
 
 @Composable
-fun ChallengeInnerScreen() {
+fun ChallengeInnerScreen(navController: NavController) {
     Column(
         modifier = Modifier.padding(top = 15.dp, start = 25.dp, end = 25.dp, bottom = 75.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -35,9 +39,9 @@ fun ChallengeInnerScreen() {
         CustomSpacer()
         val scrollState = rememberScrollState()
         Column(modifier = Modifier.verticalScroll(scrollState)) {
-            CarouselTitled(title = "Desafíos para ti")
+            CarouselTitled(title = "Desafíos para ti", navController = navController)
             CustomSpacer(15.0)
-            CarouselTitled(title = "Favoritos")
+            CarouselTitled(title = "Favoritos", navController = navController)
         }
     }
 }
@@ -59,32 +63,32 @@ fun SearchBar() {
 }
 
 @Composable
-fun CarouselTitled(title: String) {
+fun CarouselTitled(navController: NavController,title: String) {
     Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
         Text(text = title)
-        CustomCardSlider()
+        CustomCardSlider(navController)
     }
 }
 
 @Composable
-fun CustomCardSlider() {
+fun CustomCardSlider(navController: NavController) {
     val scrollState = rememberScrollState()
     Row(
         horizontalArrangement = Arrangement.spacedBy(20.dp),
         modifier = Modifier.horizontalScroll(scrollState)
     ) {
-        CustomCard()
-        CustomCard()
-        CustomCard()
-        CustomCard()
-        CustomCard()
-        CustomCard()
-        CustomCard()
+        CustomCard(navController)
+        CustomCard(navController)
+        CustomCard(navController)
+        CustomCard(navController)
+        CustomCard(navController)
+        CustomCard(navController)
+        CustomCard(navController)
     }
 }
 
 @Composable
-fun CustomCard() {
+fun CustomCard(navController: NavController) {
     Card(
         shape = RoundedCornerShape(19.dp),
         backgroundColor = Color.White,
@@ -113,7 +117,9 @@ fun CustomCard() {
                     Text(text = "5.0", fontSize = 18.sp)
                     Icon(imageVector = Icons.Default.Star, contentDescription = "")
                     Spacer(modifier = Modifier.weight(1f))
-                    OutlinedButton(onClick = { /*TODO*/ }) {
+                    OutlinedButton(onClick = {
+                        navController.navigate(Graph.GAME)
+                    }) {
                         Text(text = "Jugar")
                     }
                 }
@@ -123,8 +129,15 @@ fun CustomCard() {
     }
 }
 
+fun NavHostController.navigateAndClean(route: String) {
+    navigate(route = route) {
+        popUpTo(graph.startDestinationId) { inclusive = true }
+    }
+    graph.setStartDestination(route)
+}
+
 @Composable
 @Preview(showSystemUi = true)
 fun Preview() {
-    ChallengeInnerScreen()
+    ChallengeInnerScreen(rememberNavController())
 }

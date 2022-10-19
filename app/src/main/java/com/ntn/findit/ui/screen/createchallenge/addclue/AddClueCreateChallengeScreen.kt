@@ -7,6 +7,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.ui.screen.shared.CustomDivider
@@ -49,24 +52,26 @@ fun Subtitle() {
 }
 
 @Composable
-fun Body() {
+fun Body(_viewModel: AddClueViewModel = viewModel()) {
+    val clueName: String by _viewModel.clueName.observeAsState("")
+    val clueContent: String by _viewModel.clueContent.observeAsState("")
+    val points: Int by _viewModel.points.observeAsState(0)
     Column(verticalArrangement = Arrangement.spacedBy(15.dp)) {
         Text(text = "Nombre de la pista", fontWeight = FontWeight.ExtraBold)
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = clueName,
+            onValueChange = {_viewModel.onClueNameChange(it)},
             label = { Text("Nombre de la pista") },
             shape = RoundedCornerShape(20),
             modifier = Modifier.fillMaxWidth()
         )
 
         CustomDivider()
-        Text(text = "Tipo", fontWeight = FontWeight.ExtraBold)
         // TODO IMPLEMENT
         Text(text = "Contenido de la pista", fontWeight = FontWeight.ExtraBold)
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = clueContent,
+            onValueChange = {_viewModel.onContentChange(it)},
             label = { Text("Pista...") },
             shape = RoundedCornerShape(20),
             modifier = Modifier.fillMaxWidth()
@@ -78,11 +83,11 @@ fun Body() {
         ) {
             Text(text = "Puntaje de penalización", modifier = Modifier.padding(horizontal = 5.dp))
             Spacer(modifier = Modifier.weight(1f))
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { _viewModel.onModifyPoints(1) }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "")
             }
-            Text(text = "-1")
-            IconButton(onClick = { /*TODO*/ }) {
+            Text(text = points.toString(), fontSize = 14.sp)
+            IconButton(onClick = {_viewModel.onModifyPoints(-1)}) {
                 Icon(imageVector = Icons.Default.Delete, contentDescription = "")
             }
         }

@@ -1,12 +1,9 @@
-package com.ntn.findit.ui.screen.challengeinfo
+package com.ntn.findit.ui.screen.ingame.challengeinfo
 
-import android.widget.RadioGroup
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.ExitToApp
@@ -15,8 +12,6 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -24,12 +19,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.R
+import com.ntn.findit.ui.navigation.Graph
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.ntn.findit.ui.theme.LightWhite
 
 @Composable
-fun SeeChallengeInfo() {
+fun SeeChallengeInfo(navController: NavController) {
     val scrollState = rememberScrollState()
     Column(modifier = Modifier.verticalScroll(scrollState)) {
         Head()
@@ -38,7 +36,7 @@ fun SeeChallengeInfo() {
             CustomSpacer(14.0)
             Body2()
             CustomSpacer(14.0)
-            Foot()
+            Foot(navController)
         }
     }
 }
@@ -115,13 +113,12 @@ fun Body2() {
 }
 
 @Composable
-fun Foot() {
+fun Foot(navController: NavController) {
     Column {
-        Text(text = "Dificultad", fontSize = 15.sp, fontWeight = FontWeight.Bold) // TODO QUITARLO ?
         Row() {
             //CustomRadioGroup()
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate(Graph.GAME) },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20)
             ){
@@ -142,5 +139,5 @@ fun CustomRadioGroup() {
 @Composable
 @Preview(showSystemUi = true, name = "See challenge info")
 fun Preview() {
-    SeeChallengeInfo()
+    SeeChallengeInfo(rememberNavController())
 }

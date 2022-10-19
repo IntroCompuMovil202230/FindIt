@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ntn.findit.R
-import com.ntn.findit.ui.screen.challengeinfo.Body
-import com.ntn.findit.ui.screen.challengeinfo.Body2
+import com.ntn.findit.ui.screen.ingame.challengeinfo.Body
+import com.ntn.findit.ui.screen.ingame.challengeinfo.Body2
 
 @Composable
 fun CreateChallengePreviewScreen(navController: NavController) {
