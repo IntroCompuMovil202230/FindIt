@@ -1,8 +1,6 @@
 package com.ntn.findit.ui.screen.shared
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,10 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ntn.findit.ui.theme.FBlue
 import com.ntn.findit.ui.theme.LightWhite
 
@@ -57,6 +57,21 @@ fun CustomOutlinedTextField(
         label = { Text(hint) },
         shape = RoundedCornerShape(20),
     )
+}
+
+
+@Composable
+fun TitledTextField(title: String, hint: String, value: String, onTextChange: (String) -> Unit) {
+    Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Text(text = title, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
+        OutlinedTextField(
+            value = value,
+            onValueChange = onTextChange,
+            label = { Text(hint) },
+            shape = RoundedCornerShape(20),
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
 }
 
 @Composable

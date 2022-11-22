@@ -34,7 +34,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
 import com.ntn.findit.generalviewmodels.GeoCoderViewModel
 import com.ntn.findit.generalviewmodels.LocalizationViewModel
+import com.ntn.findit.model.Challenge
 import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
+import com.ntn.findit.ui.screen.createchallenge.SharedViewModel
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.ntn.findit.ui.theme.LightWhite
 import kotlinx.coroutines.launch
@@ -43,8 +45,12 @@ import kotlinx.coroutines.launch
 fun LocationCreateChallengeScreen(
     navController: NavController,
     _viewModel: LocationCreateChallengeViewModel = viewModel(),
-    _locationViewModel: LocalizationViewModel = viewModel()
+    _locationViewModel: LocalizationViewModel = viewModel(),
 ) {
+    /*
+    val challenge = navController.previousBackStackEntry?.savedStateHandle?.get<Challenge>("challenge")
+    Log.i("esto pasa","imprime esto: "+challenge?.name.toString()+challenge?.description.toString())
+     */
     Column(
         Modifier.padding(vertical = 45.dp, horizontal = 25.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -67,7 +73,6 @@ fun Title() {
     Text(text = "Ubicación Objetivo", fontWeight = FontWeight.ExtraBold, fontSize = 30.sp)
     CustomSpacer(10.0)
     Text(text = "Elige o ingresa una ubicación para el objetivo")
-
 }
 
 @Composable
@@ -171,18 +176,29 @@ fun Foot(navController: NavController, _viewModel: LocationCreateChallengeViewMo
             _viewModel.onRequestedLocation()
         }) {
             Icon(imageVector = Icons.Default.LocationOn, contentDescription = "")
-            CustomSpacer(2.0)
+            CustomSpacer(1.0)
             Text(text = "Seleccionar mi ubicación actual")
         }
 
-        CustomSpacer(5.0)
+        CustomSpacer(1.0)
         Row {
             OutlinedButton(onClick = {}) {
                 Text(text = "Anterior")
             }
-            CustomSpacer(30.0)
+            CustomSpacer(1.0)
             Button(
-                onClick = { navController.navigate(CreateChallenge.AddClue.route) },
+                onClick = {
+                    val challenge = navController.previousBackStackEntry?.savedStateHandle?.get<Challenge>("challenge")
+
+                    challenge?.latitude = _viewModel.marker.value?.latitude!!
+                    challenge?.longitude = _viewModel.marker.value?.longitude!!
+                    if (challenge != null) {
+                        _viewModel.saveBasicChallengeData(challenge)
+                        Log.i("esto pasa food","imprime esto: "+challenge?.name.toString()+challenge?.description.toString())
+                        navController.currentBackStackEntry?.savedStateHandle?.set(key="name",value=challenge?.name)
+                    }
+
+                    navController.navigate(CreateChallenge.CreateClues.route) },
                 enabled = nextEnabled
             ) {
                 Text(text = "Siguiente")

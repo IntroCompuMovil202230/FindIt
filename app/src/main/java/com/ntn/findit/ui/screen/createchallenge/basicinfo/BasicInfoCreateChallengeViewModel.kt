@@ -5,6 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.firebase.storage.FirebaseStorage
+import com.ntn.findit.ui.screen.createchallenge.SharedViewModel
 
 class BasicInfoCreateChallengeViewModel: ViewModel() {
     private val _clueName = MutableLiveData<String>()
@@ -18,6 +21,7 @@ class BasicInfoCreateChallengeViewModel: ViewModel() {
 
     private val _continueEnable = MutableLiveData<Boolean>()
     val continueEnable: LiveData<Boolean> = _continueEnable
+
 
     fun onClueNameChange(clueName: String){
         _clueName.value = clueName
@@ -39,5 +43,20 @@ class BasicInfoCreateChallengeViewModel: ViewModel() {
         Log.d("Mio", "URI: ${uri}")
         _imageUri.value = uri
         onFormChange()
+    }
+    fun uploadImage(image: Uri) {
+
+        //Firebase firestore
+        // Create a storage reference from our app
+        val storageRef = FirebaseStorage.getInstance().reference
+
+        // Create a reference to 'images/mountains.jpg'
+        val uploadTask = storageRef.child("challenges/"+clueName.value+".jpg").putFile(image)
+        uploadTask.addOnSuccessListener {
+            Log.e("Firebase", "Image Upload success")
+        }.addOnFailureListener {
+            Log.e("Firebase", "Image Upload fail")
+            //       mProgressDialog.dismiss()
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.ntn.findit.app
 
 import android.app.Application
 import com.parse.Parse;
+import com.parse.ParseInstallation
 
 class App : Application() {
     companion object {
@@ -16,6 +17,13 @@ class App : Application() {
                 .server(PARSE_SERVER)
                 .build()
         )
+
+        val installation = ParseInstallation.getCurrentInstallation()
+        installation.put("GCMSenderId", "1072832924272")
+        val channels: ArrayList<String> = ArrayList()
+        channels.add("AvailableUser")
+        installation.put("channels", channels)
+        installation.saveInBackground()
 
     }
 }

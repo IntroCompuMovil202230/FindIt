@@ -29,15 +29,19 @@ import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import com.ntn.findit.R
 import com.ntn.findit.logic.fileprovider.ComposeFileProvider
+import com.ntn.findit.model.Challenge
 import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
+import com.ntn.findit.ui.screen.createchallenge.SharedViewModel
 import com.ntn.findit.ui.screen.shared.CustomOutlinedTextField
 import com.ntn.findit.ui.screen.shared.CustomSpacer
+import com.parse.ParseUser
 import kotlinx.coroutines.launch
 
 @Composable
 fun BasicInfoCreateChallengeScreen(
     navController: NavController,
-    _viewModel: BasicInfoCreateChallengeViewModel = viewModel()
+    _viewModel: BasicInfoCreateChallengeViewModel = viewModel(),
+    _sharedViewModel: SharedViewModel = viewModel()
 ) {
     val scrollState = rememberScrollState()
     Column(
@@ -66,7 +70,7 @@ fun Title() {
 }
 
 @Composable
-fun Body(_viewModel: BasicInfoCreateChallengeViewModel = viewModel()) {
+fun Body(_viewModel: BasicInfoCreateChallengeViewModel = viewModel(),_sharedViewModel: SharedViewModel = viewModel()) {
     var hasImage by remember {
         mutableStateOf(false)
     }
@@ -95,13 +99,14 @@ fun Body(_viewModel: BasicInfoCreateChallengeViewModel = viewModel()) {
         value = description,
         onTextChange = { _viewModel.onDescriptionChange(it) })
     CustomSpacer(10.0)
-    Text(text = "Imágen", fontWeight = FontWeight.ExtraBold)
+    Text(text = "Imagen", fontWeight = FontWeight.ExtraBold)
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Button(
             onClick = {
                 val uri = ComposeFileProvider.getImageUri(context)
                 cameraLauncher.launch(uri)
                 _viewModel.onUriChange(uri)
+                _viewModel.uploadImage(uri)
             },
             modifier = Modifier.clip(CircleShape),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
@@ -129,7 +134,8 @@ fun Body(_viewModel: BasicInfoCreateChallengeViewModel = viewModel()) {
 @Composable
 fun Foot(
     navController: NavController,
-    _viewModel: BasicInfoCreateChallengeViewModel = viewModel()
+    _viewModel: BasicInfoCreateChallengeViewModel = viewModel(),
+    _sharedViewModel: SharedViewModel = viewModel()
 ) {
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -140,7 +146,15 @@ fun Foot(
         }
         val enabled by _viewModel.continueEnable.observeAsState(false)
         Button(
-            onClick = { navController.navigate(CreateChallenge.ChallengeLocation.route) },
+            onClick = {
+                var c: Challenge = Challenge()
+                c.name=_viewModel.clueName.value.toString()
+                c.description = _viewModel.description.value.toString()
+                c.imageUrl = "challenges/"+_viewModel.clueName.value.toString()+".jpg"
+                c.creator = ParseUser.getCurrentUser().username
+                _sharedViewModel.setChallen(c)
+             navController.currentBackStackEntry?.savedStateHandle?.set(key="challenge",value=c)
+                navController.navigate(CreateChallenge.ChallengeLocation.route) },
             enabled = enabled
         ) {
             Text(text = "Siguiente")

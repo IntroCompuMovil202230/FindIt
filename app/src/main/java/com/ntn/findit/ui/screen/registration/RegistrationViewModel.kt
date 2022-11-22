@@ -1,10 +1,12 @@
 package com.ntn.findit.ui.screen.registration
 
+import android.net.Uri
 import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.storage.FirebaseStorage
 import com.parse.Parse
 import com.parse.ParseException
 import com.parse.ParseUser
@@ -72,5 +74,7 @@ class RegistrationViewModel : ViewModel() {
         }catch (e: ParseException){}
 
     }
+
+
 
 }
