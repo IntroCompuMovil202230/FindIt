@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1072832924272",
+    "project_id": "keep-food-4e59c",
+    "storage_bucket": "keep-food-4e59c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072832924272:android:21e5a692636f442e3b42b5",
+        "android_client_info": {
+          "package_name": "com.ntn.findit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072832924272-3h2375jb7f3105li47tftvlfdanh30s4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5zlcLawbYSlE7iX3ZA0y3laMIWcdLwPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072832924272-3h2375jb7f3105li47tftvlfdanh30s4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072832924272:android:cc13215a73240ed83b42b5",
+        "android_client_info": {
+          "package_name": "com.ntn.taller3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072832924272-3h2375jb7f3105li47tftvlfdanh30s4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5zlcLawbYSlE7iX3ZA0y3laMIWcdLwPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072832924272-3h2375jb7f3105li47tftvlfdanh30s4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
