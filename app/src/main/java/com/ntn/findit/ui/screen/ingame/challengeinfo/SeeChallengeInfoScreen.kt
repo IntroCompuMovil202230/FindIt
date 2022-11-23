@@ -32,9 +32,9 @@ fun SeeChallengeInfo(navController: NavController) {
     Column(modifier = Modifier.verticalScroll(scrollState)) {
         Head()
         Column(Modifier.padding(vertical = 25.dp, horizontal = 25.dp)) {
-            Body()
+            Body("Busqueda Pirata","Description","Juan","5.0")
             CustomSpacer(14.0)
-            Body2()
+            Body2("12")
             CustomSpacer(14.0)
             Foot(navController)
         }
@@ -57,20 +57,20 @@ fun Head() {
 }
 
 @Composable
-fun Body() {
+fun Body(name:String,desc:String,creator:String,rating:String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Column {
-            Text(text = "Busqueda Pirata", fontSize = 16.sp, fontWeight = FontWeight.ExtraBold)
+            Text(text = name, fontSize = 16.sp, fontWeight = FontWeight.ExtraBold)
             CustomSpacer(3.0)
-            Text(text = "Descripción")
+            Text(text = desc)
         }
         Spacer(modifier = Modifier.weight(1f))
         Column {
             Row {
-                Text(text = "5.0", fontSize = 18.sp)
+                Text(text = rating, fontSize = 18.sp)
                 Icon(imageVector = Icons.Default.Star, contentDescription = "")
             }
-            Text(text = "Creador: @lucas")
+            Text(text = "Creador: @"+creator)
         }
         IconButton(onClick = { /*TODO*/ }) {
             Icon(imageVector = Icons.Default.AddCircle, contentDescription = "")
@@ -79,7 +79,7 @@ fun Body() {
 }
 
 @Composable
-fun Body2() {
+fun Body2(numClues:String) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(15),
@@ -100,12 +100,12 @@ fun Body2() {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(imageVector = Icons.Default.Star, contentDescription = "")
                 CustomSpacer(4.0)
-                Text(text = "1 Pista principal")
+                Text(text = "Pista principal")
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(imageVector = Icons.Default.Star, contentDescription = "")
                 CustomSpacer(4.0)
-                Text(text = "12 Pista Secundarias")
+                Text(text = numClues+" Pista Secundarias")
             }
             CustomSpacer(10.0)
         }

@@ -44,7 +44,7 @@ class AddClueViewModel : ViewModel() {
         _expanded.value = expanded
     }
 
-    private val _selectedTypeText = MutableStateFlow("Cédula de ciudadania")
+    private val _selectedTypeText = MutableStateFlow("Texto")
     val selectedTypeText = _selectedTypeText.asStateFlow()
 
     fun setSelectedTypeText(selectedtype: String) {

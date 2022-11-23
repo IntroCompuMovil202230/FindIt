@@ -39,28 +39,40 @@ import kotlin.math.round
 
 @Composable
 fun CluesCreateChallengeScreen(navController: NavController,_viewModel: ClueCreateChallengeViewModel = viewModel()) {
-    Column(Modifier.padding(vertical = 45.dp, horizontal = 25.dp)) {
-        LinearProgressIndicator(progress = 0.7f, modifier = Modifier.fillMaxWidth())
-        CustomSpacer(2.0)
-        Title()
-        CustomSpacer(5.0)
-        ListHeaders(navController)
-        CustomSpacer(5.0)
-        ListClues()
-        Foot()
-
-        val challenge =
-            navController.previousBackStackEntry?.savedStateHandle?.get<String>("name")
-        LaunchedEffect(key1=challenge) {
-            if (challenge != null) {
-                Log.i("challenge status", challenge)
-                _viewModel.getClues(challenge)
-                navController.currentBackStackEntry?.savedStateHandle?.set(key="name",value=challenge)
-            }
+    val scrollState = rememberScrollState()
+    val challenge =
+        navController.previousBackStackEntry?.savedStateHandle?.get<String>("name")
+    LaunchedEffect(key1=challenge) {
+        if (challenge != null) {
+            Log.i("challenge status", challenge)
+            _viewModel.getClues(challenge)
+            navController.currentBackStackEntry?.savedStateHandle?.set(key="name",value=challenge)
         }
-
-
     }
+    Column(Modifier
+        .padding(vertical = 45.dp)) {
+        Column(
+            Modifier
+                .padding(vertical = 45.dp)
+                .verticalScroll(scrollState)
+        ) {
+            CustomSpacer(5.0)
+            LinearProgressIndicator(progress = 0.7f, modifier = Modifier.fillMaxWidth())
+            CustomSpacer(2.0)
+            Title()
+            CustomSpacer(5.0)
+            ListHeaders(navController)
+            CustomSpacer(5.0)
+            Foot(navController = navController)
+        }
+        Column(
+            Modifier
+                .padding(vertical = 45.dp)
+        ) {
+            ListClues()
+        }
+    }
+
 }
 
 @Composable
@@ -117,7 +129,7 @@ fun ItemClue(clue: Clue) {
 
 
 @Composable
-fun Foot() {
+fun Foot(navController:NavController) {
     Row(verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceAround
     ) {
@@ -126,7 +138,7 @@ fun Foot() {
             Text(text = "Anterior")
         }
         CustomSpacer(10.0)
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { navController.navigate(CreateChallenge.ChallengePreview.route) }) {
             Text(text = "Siguiente")
         }
         Spacer(modifier = Modifier.weight(1f))
