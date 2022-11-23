@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.LocalContext
@@ -14,17 +15,25 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.google.android.gms.maps.model.LatLng
 import com.ntn.findit.generalviewmodels.LocalizationViewModel
+import com.ntn.findit.model.Challenge
 
 @Composable
-fun Game(_viewModel : GameViewModel = viewModel(), _locationViewModel: LocalizationViewModel = viewModel()) {
-    RequestLocationPermission()
+fun Game(navController: NavController, _viewModel : GameViewModel = viewModel()) {
+    LaunchedEffect(key1 = Unit){
+        val challenge = navController.previousBackStackEntry?.savedStateHandle?.get<Challenge>("challenge")
+        if (challenge != null) {
+            _viewModel.setChallenge(challenge)
+        }
 
+    }
+    RequestLocationPermission()
     when(_viewModel.uiState.value){
         is GameState.Thermometer -> ThermometerScreen()
         is GameState.GameMapScreen -> GameMap()

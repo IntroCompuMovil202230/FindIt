@@ -1,22 +1,32 @@
 package com.ntn.findit.ui.screen.ingame.thermometer
 
+import android.util.Log
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ntn.findit.R
 import com.ntn.findit.generalviewmodels.CompassViewModel
 
 @Composable
@@ -26,8 +36,7 @@ fun ThermometerScreen() {
 
 @Composable
 fun Thermometer(_viewModel: GameViewModel = viewModel(), _compassViewModel: CompassViewModel = viewModel()) {
-    val temperature: Double by _viewModel.temperature.observeAsState(0.0)
-    val degrees: Int by _compassViewModel.requestCompassSensorUpdates().observeAsState(0)
+    val color by _viewModel.thermo.collectAsState()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,28 +61,54 @@ fun Thermometer(_viewModel: GameViewModel = viewModel(), _compassViewModel: Comp
             Text(text = "Mapa")
         }
         Text(
-            text = temperature.toString(),
-            fontSize = 100.sp,
+            text = color.first,
+            color = Color(color.second),
+            fontSize = 60.sp,
             modifier = Modifier.align(Alignment.Center)
         )
 
-        Text(
-            text = degrees.toString(),
-            fontSize = 30.sp,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 190.dp)
-        )
-        OutlinedButton(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 60.dp)
-        ) {
-            Text(text = "Ver pistas")
+        val currentRotation: Float by _compassViewModel.requestCompassSensorUpdates().observeAsState(0f)
+        val (lastRotation, setLastRotation) = remember { mutableStateOf(0f) }
+        var newRotation = lastRotation
+        val modLast = if (lastRotation > 0) lastRotation % 360 else 360 - (-lastRotation % 360)
+
+        if (modLast != currentRotation) {
+            val backward =
+                if (currentRotation > modLast) modLast + 360 - currentRotation else modLast - currentRotation
+            val forward =
+                if (currentRotation > modLast) currentRotation - modLast else 360 - modLast + currentRotation
+            newRotation = if (backward < forward) {
+                lastRotation - backward
+            } else {
+                lastRotation + forward
+            }
+            setLastRotation(newRotation)
         }
+
+        val rotation: Float by animateFloatAsState(
+            targetValue = -newRotation,
+            animationSpec = tween(
+                durationMillis = 150,
+                easing = LinearEasing
+            )
+        )
+
+        Image(
+            modifier = Modifier
+                .rotate(rotation)
+                .size(265.dp)
+                .padding(bottom = 15.dp)
+                .align(Alignment.BottomCenter),
+            painter = painterResource(id = R.drawable.wind_rose),
+            colorFilter = ColorFilter.tint(MaterialTheme.colors.primary),
+            contentDescription = ""
+        )
     }
 }
+
+
+
+
 
 @Preview(showSystemUi = true)
 @Composable

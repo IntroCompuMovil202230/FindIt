@@ -19,6 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.maps.android.compose.*
 import com.ntn.findit.generalviewmodels.LightSensorViewModel
@@ -42,6 +45,7 @@ fun GameMap(
             mapStyleOptions = MapStyleOptions("[]")
         )
     )
+    val challenge by _viewModel.challenge.collectAsState()
     val lightSensor: Float by _lightSensorVM.requestLightSensorUpdates().observeAsState(20000f)
     val context = LocalContext.current
 
@@ -52,7 +56,13 @@ fun GameMap(
     }
 
 
-    val cameraPositionState = rememberCameraPositionState()
+    var seePoint by remember {
+        mutableStateOf(false)
+    }
+    val cameraPositionState = rememberCameraPositionState(){
+        if(markerState != null)
+            position = CameraPosition.fromLatLngZoom(markerState!!, 10f)
+    }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -69,6 +79,15 @@ fun GameMap(
                     state = it,
                     title = "Tu ubicación",
                     snippet = "Sigue buscando"
+                )
+            }
+
+            if(seePoint){
+                Marker(
+                    state = MarkerState(LatLng(challenge.latitude, challenge.longitude)),
+                    title = challenge.name,
+                    snippet = challenge.description,
+                    icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
                 )
             }
 
@@ -94,12 +113,12 @@ fun GameMap(
         }
 
         OutlinedButton(
-            onClick = { _viewModel.onStateChange(GameState.SeeClues) },
+            onClick = { seePoint = !seePoint },
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 60.dp)
         ) {
-            Text(text = "Ver pistas")
+            Text(text = "Ver punto")
         }
     }
 }

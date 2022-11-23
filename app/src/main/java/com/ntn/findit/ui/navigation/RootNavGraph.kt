@@ -1,9 +1,11 @@
 package com.ntn.findit.ui.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.ntn.findit.model.Challenge
 import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
 import com.ntn.findit.ui.screen.ingame.thermometer.Game
 import com.ntn.findit.ui.screen.mainscreen.MainScreenView
@@ -18,9 +20,6 @@ fun RootNavigationGraph(navController: NavHostController, start: String) {
         authNavGraph(navController)
         composable(route = Graph.HOME){
             MainScreenView()
-        }
-        composable(route = Graph.GAME){
-            Game()
         }
     }
 }

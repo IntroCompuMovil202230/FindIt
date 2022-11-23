@@ -8,7 +8,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.lifecycle.LiveData
 
-class CompassSensorLiveData(application: Application) : LiveData<Int>() {
+class CompassSensorLiveData(application: Application) : LiveData<Float>() {
     private val sensorManager =
         application.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     private val accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -38,7 +38,7 @@ class CompassSensorLiveData(application: Application) : LiveData<Int>() {
                 currentDegree = (-azimuthUnDegrees).toFloat()
                 lastUpdatedTime = System.currentTimeMillis()
 
-                value = azimuthUnDegrees.toInt()
+                value = azimuthUnDegrees.toFloat()
             }
         }
 

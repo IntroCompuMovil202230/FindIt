@@ -10,21 +10,6 @@ const val DISTANCE_REPORT = 15 // 15 metros de safe zone
 const val MAX_DISTANCE = 215
 val TEST = LatLng(4.628437, -74.064385) //Solo para pruebas TODO REMOVER
 
-fun calculateTemperature(pos: LatLng, reference: LatLng): Double {
-    val dis =
-        calculateDistance(pos.latitude,
-            pos.longitude,
-            reference.latitude,
-            reference.longitude)*1000.0
-    Log.d("Tempo","Test___ $dis")
-    if (dis > MAX_DISTANCE)
-        return 0.0
-    if(dis <= DISTANCE_REPORT){
-        return 100.0
-    }
-    return (100-(dis*2)).toBigDecimal().setScale(2, RoundingMode.FLOOR).toDouble()
-
-}
 
 fun calculateDistance(lat1: Double, long1: Double, lat2: Double, long2: Double): Double {
     val latDistance = Math.toRadians(lat1 - lat2)
@@ -34,6 +19,6 @@ fun calculateDistance(lat1: Double, long1: Double, lat2: Double, long2: Double):
             * sin(lngDistance / 2) * sin(lngDistance / 2)))
     val c = 2 * atan2(sqrt(a), sqrt(1 - a))
     val result: Double = RADIUS_OF_EARTH_KM * c
-    return (result * 100.0) / 100.0
+    return result *1000
 }
 
