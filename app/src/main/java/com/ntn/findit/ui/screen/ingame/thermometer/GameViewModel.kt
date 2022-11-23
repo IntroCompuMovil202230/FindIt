@@ -104,9 +104,10 @@ class GameViewModel: ViewModel() {
         }else if(distance >= 100){
             Pair("Caliente", 0xFFFFA630)
         }else if (distance >= 40){
-            Pair("Muy caliente",0xFFF17720)
+            Pair("Hirviendo",0xFFF17720)
         }else{
-            Pair("Hirviendo", 0xFFE0495F)
+            _uiState.value = GameState.WinAlertDialog
+            Pair("Has ganado", 0xFFE0495F)
         }
 
     }

@@ -7,6 +7,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.ntn.findit.ui.navigation.Graph
 
 @Composable
 fun EndConfirmation() {
@@ -23,12 +26,12 @@ fun EndConfirmation() {
     )
 }
 @Composable
-fun WinConfirmation() {
+fun WinConfirmation(navController: NavController) {
     AlertDialog(
-        onDismissRequest = { /*TODO*/ },
+        onDismissRequest = { navController.navigate(Graph.HOME) },
         title = { Text(text = "Partida Ganada", fontWeight = FontWeight.ExtraBold) },
         text = { Text(text = "Has ganado la partida, ¡disfruta de tu destino!")},
-        confirmButton = { Button(onClick = { /*TODO*/ }) {
+        confirmButton = { Button(onClick = {navController.navigate(Graph.HOME) }) {
             Text(text = "Continuar")
         }}
     )
@@ -38,7 +41,7 @@ fun WinConfirmation() {
 @Preview
 @Composable
 fun PreviewDialog(){
-    WinConfirmation()
+    WinConfirmation(rememberNavController())
 }
 
 @Composable

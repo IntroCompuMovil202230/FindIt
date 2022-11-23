@@ -39,7 +39,7 @@ fun Game(navController: NavController, _viewModel : GameViewModel = viewModel())
         is GameState.GameMapScreen -> GameMap()
         is GameState.CancelAlertDialog -> EndConfirmation()
         is GameState.SeeClues -> ShowCluesScreen()
-        is GameState.WinAlertDialog -> WinConfirmation()
+        is GameState.WinAlertDialog -> WinConfirmation(navController)
     }
 }
 @ExperimentalPermissionsApi
