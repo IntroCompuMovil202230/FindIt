@@ -28,10 +28,10 @@ class CreateChallengePreviewViewModel: ViewModel() {
     private val _creator = MutableStateFlow<String>("")
     val creator = _creator
 
-    private val _rating = MutableLiveData<Double>()
+    private val _rating = MutableLiveData<Double>(0.0)
     val rating = _rating
 
-    private val _numClues = MutableLiveData<Int>()
+    private val _numClues = MutableLiveData<String>("")
     val numClues = _numClues
 
     private val _image = MutableStateFlow<Uri?>(null)
@@ -53,7 +53,7 @@ class CreateChallengePreviewViewModel: ViewModel() {
         _creator.value = creator
     }
 
-    fun setNumClues(numClues : Int){
+    fun setNumClues(numClues : String){
         _numClues.value = numClues
     }
 
@@ -86,12 +86,15 @@ class CreateChallengePreviewViewModel: ViewModel() {
 
                 setRating(crating)
 
+                val query2 = ParseQuery.getQuery<ParseObject>("Clue")
+                query2.whereEqualTo("challengeName", challenge)
+                query2.countInBackground().onSuccess{it->
+                    Log.i("cuenta","cuenta"+it.result.toString())
+                    setNumClues(it.result.toString())
+                }
+
             }
-            val query2 = ParseQuery.getQuery<ParseObject>("Clue")
-            query2.whereEqualTo("challengeName", challenge)
-            query2.countInBackground().onSuccess{it->
-                setNumClues(it.result)
-            }
+
         }
     }
 

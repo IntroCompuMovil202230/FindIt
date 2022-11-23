@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.storage.FirebaseStorage
 import com.parse.ParseObject
+import com.parse.ParseQuery
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -117,23 +118,27 @@ class AddClueViewModel : ViewModel() {
 
     fun save(challengeName: String){
         viewModelScope.launch {
-            val ob = ParseObject("Clue")
-            if(selectedTypeText.value == "Imagen") {
-                ob.put("type", "Imagen")
-                _image.value?.let { uploadImage(it) }
+            val query = ParseQuery.getQuery<ParseObject>("Clue")
+            _clueName?.value?.let { query.whereEqualTo("name",  it) }
+            query.countInBackground().onSuccess { it ->
+                if (it.result == 0) {
+                    val ob = ParseObject("Clue")
+                    if (selectedTypeText.value == "Imagen") {
+                        ob.put("type", "Imagen")
+                        _image.value?.let { uploadImage(it) }
+                    } else if (selectedTypeText.value == "Texto") {
+                        ob.put("type", "Texto")
+                        ob.put("text", _content.value)
+                    } else if (selectedTypeText.value == "Pregunta") {
+                        ob.put("type", "Pregunta")
+                        ob.put("question", _question.value)
+                        ob.put("answer", _answer.value)
+                    }
+                    _clueName?.value?.let { ob.put("name", it) }
+                    ob.put("challengeName", challengeName)
+                    ob.save()
+                }
             }
-            else if(selectedTypeText.value == "Texto") {
-                ob.put("type", "Texto")
-                ob.put("text",_content.value)
-            }
-            else if(selectedTypeText.value == "Pregunta"){
-                ob.put("type", "Pregunta")
-                ob.put("question",_question.value)
-                ob.put("answer",_answer.value)
-            }
-            _clueName?.value?.let { ob.put("name", it) }
-            ob.put("challengeName",challengeName)
-            ob.save()
         }
     }
 

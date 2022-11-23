@@ -25,6 +25,7 @@ import com.ntn.findit.R
 import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
 import com.ntn.findit.ui.screen.ingame.challengeinfo.Body
 import com.ntn.findit.ui.screen.ingame.challengeinfo.Body2
+import com.ntn.findit.ui.screen.mainscreen.navigation.BottomNavigationBar
 
 @Composable
 fun CreateChallengePreviewScreen(navController: NavController, _viewModel:CreateChallengePreviewViewModel = viewModel()) {
@@ -33,7 +34,7 @@ fun CreateChallengePreviewScreen(navController: NavController, _viewModel:Create
     val name: String by _viewModel.name.collectAsState("")
     val description: String by _viewModel.description.collectAsState("")
     val creator: String by _viewModel.creator.collectAsState("")
-    val numClues: Int by _viewModel.numClues.observeAsState(0)
+    val numClues: String by _viewModel.numClues.observeAsState("")
     val rating: Double by _viewModel.rating.observeAsState(0.0)
     val image by _viewModel.image.collectAsState()
 
@@ -79,11 +80,11 @@ fun TitleImage(_viewModel:CreateChallengePreviewViewModel) {
 fun Foot(navController: NavController,_viewModel:CreateChallengePreviewViewModel){
     Row(horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier.fillMaxWidth()){
-        OutlinedButton(onClick = { }) {
+        OutlinedButton(onClick = {navController.popBackStack() }) {
             Text(text = "Anterior")
         }
-        Button(onClick = { _viewModel.pushAvailableNotification()
-            navController.navigate(CreateChallenge.BasicInfo.route) }) {
+        Button(onClick = {// _viewModel.pushAvailableNotification()
+            navController.navigate(BottomNavigationBar.MyChallenges.route) }) {
             Text(text = "Finalizar")
 
         }

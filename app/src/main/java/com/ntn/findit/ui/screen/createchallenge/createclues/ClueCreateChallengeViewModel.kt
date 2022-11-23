@@ -31,12 +31,15 @@ class ClueCreateChallengeViewModel: ViewModel() {
 
                 if (name != null && type!= null){
                     Log.i("clue"+name,name+" "+type)
-                    clues.value.add(
-                        Clue(
-                            name = name,
-                            type = type
-                        )
+                    val clue = Clue(
+                        name = name,
+                        type = type
                     )
+                    if(!clues.value.contains(clue)){
+                        clues.value.add(
+                            clue
+                        )
+                    }
                 }
 
             }

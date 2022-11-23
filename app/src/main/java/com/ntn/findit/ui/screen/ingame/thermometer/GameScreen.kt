@@ -24,6 +24,7 @@ import com.ntn.findit.generalviewmodels.LocalizationViewModel
 @Composable
 fun Game(_viewModel : GameViewModel = viewModel(), _locationViewModel: LocalizationViewModel = viewModel()) {
     RequestLocationPermission()
+
     when(_viewModel.uiState.value){
         is GameState.Thermometer -> ThermometerScreen()
         is GameState.GameMapScreen -> GameMap()

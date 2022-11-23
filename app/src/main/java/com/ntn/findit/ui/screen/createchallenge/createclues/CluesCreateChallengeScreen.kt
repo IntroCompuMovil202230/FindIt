@@ -40,6 +40,7 @@ import kotlin.math.round
 @Composable
 fun CluesCreateChallengeScreen(navController: NavController,_viewModel: ClueCreateChallengeViewModel = viewModel()) {
     val scrollState = rememberScrollState()
+    val clues by _viewModel.clues.collectAsState()
     val challenge =
         navController.previousBackStackEntry?.savedStateHandle?.get<String>("name")
     LaunchedEffect(key1=challenge) {
@@ -69,7 +70,7 @@ fun CluesCreateChallengeScreen(navController: NavController,_viewModel: ClueCrea
             Modifier
                 .padding(vertical = 45.dp)
         ) {
-            ListClues()
+            ListClues(clues)
         }
     }
 
@@ -99,9 +100,8 @@ fun ListHeaders(navController: NavController) {
 }
 
 @Composable
-fun ListClues(_viewModel: ClueCreateChallengeViewModel = viewModel()) {
+fun ListClues(clues:MutableList<Clue>) {
     val scrollState = rememberScrollState()
-    val clues by _viewModel.clues.collectAsState()
     LazyColumn(
         modifier = Modifier,
         verticalArrangement = Arrangement.spacedBy(15.dp)

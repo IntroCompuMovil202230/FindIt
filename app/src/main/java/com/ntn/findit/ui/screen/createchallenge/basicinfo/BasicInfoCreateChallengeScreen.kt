@@ -32,6 +32,7 @@ import com.ntn.findit.logic.fileprovider.ComposeFileProvider
 import com.ntn.findit.model.Challenge
 import com.ntn.findit.ui.screen.createchallenge.CreateChallenge
 import com.ntn.findit.ui.screen.createchallenge.SharedViewModel
+import com.ntn.findit.ui.screen.mainscreen.navigation.BottomNavigationBar
 import com.ntn.findit.ui.screen.shared.CustomOutlinedTextField
 import com.ntn.findit.ui.screen.shared.CustomSpacer
 import com.parse.ParseUser
@@ -141,8 +142,8 @@ fun Foot(
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier.fillMaxWidth()
     ) {
-        OutlinedButton(onClick = { /*TODO*/ }) {
-            Text(text = "Cancelar")
+        OutlinedButton(onClick = {  navController.navigate(BottomNavigationBar.MyChallenges.route) }) {
+            Text(text = "Anterior")
         }
         val enabled by _viewModel.continueEnable.observeAsState(false)
         Button(

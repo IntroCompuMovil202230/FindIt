@@ -182,7 +182,7 @@ fun Foot(navController: NavController, _viewModel: LocationCreateChallengeViewMo
 
         CustomSpacer(1.0)
         Row {
-            OutlinedButton(onClick = {}) {
+            OutlinedButton(onClick = {navController.popBackStack()}) {
                 Text(text = "Anterior")
             }
             CustomSpacer(1.0)
